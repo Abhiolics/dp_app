@@ -163,7 +163,7 @@ export default function TasksScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -172,13 +172,13 @@ export default function TasksScreen() {
           style={styles.backButton}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Daily Earnings & Tasks</Text>
 
         <TouchableOpacity onPress={handleRefresh} style={styles.refreshBtn} activeOpacity={0.7}>
-          <RefreshCw size={18} color="#7C3AED" />
+          <RefreshCw size={18} color="#F59E0B" />
         </TouchableOpacity>
       </View>
 
@@ -188,7 +188,7 @@ export default function TasksScreen() {
       >
         {/* Hero Rewards Banner */}
         <LinearGradient
-          colors={['#18124C', '#24176B', '#3B28A8']}
+          colors={['#2A1F08', '#1A1510', '#100E0A']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.heroCard}
@@ -202,7 +202,7 @@ export default function TasksScreen() {
               <Text style={styles.heroSub}>Complete tasks and earn instant cash rewards</Text>
             </View>
             <View style={styles.giftIconWrap}>
-              <Gift size={28} color="#DDD6FE" />
+              <Gift size={28} color="#FBBF24" />
             </View>
           </View>
         </LinearGradient>
@@ -244,7 +244,7 @@ export default function TasksScreen() {
         {activeTab === 'available' && (
           <View style={styles.tasksList}>
             {isLoading ? (
-              <ActivityIndicator color="#7C3AED" style={{ marginVertical: 36 }} />
+              <ActivityIndicator color="#F59E0B" style={{ marginVertical: 36 }} />
             ) : tasks.length === 0 ? (
               <View style={styles.emptyWrap}>
                 <Award size={40} color="#94A3B8" />
@@ -262,7 +262,7 @@ export default function TasksScreen() {
                   <View key={task._id} style={styles.taskCard}>
                     <View style={styles.taskCardTop}>
                       <View style={styles.taskTagBadge}>
-                        <Sparkles size={11} color="#7C3AED" />
+                        <Sparkles size={11} color="#F59E0B" />
                         <Text style={styles.taskTagText}>DAILY TASK</Text>
                       </View>
                       <View style={styles.rewardPill}>
@@ -275,16 +275,16 @@ export default function TasksScreen() {
 
                     <View style={styles.taskFooter}>
                       {isApproved ? (
-                        <View style={[styles.statusPill, { backgroundColor: '#D1FAE5' }]}>
+                        <View style={[styles.statusPill, { backgroundColor: 'rgba(16, 185, 129, 0.15)' }]}>
                           <CheckCircle2 size={14} color="#10B981" />
-                          <Text style={[styles.statusPillText, { color: '#065F46' }]}>
+                          <Text style={[styles.statusPillText, { color: '#10B981' }]}>
                             Reward Approved
                           </Text>
                         </View>
                       ) : isPending ? (
-                        <View style={[styles.statusPill, { backgroundColor: '#FEF3C7' }]}>
-                          <Clock size={14} color="#D97706" />
-                          <Text style={[styles.statusPillText, { color: '#92400E' }]}>
+                        <View style={[styles.statusPill, { backgroundColor: 'rgba(245, 158, 11, 0.15)' }]}>
+                          <Clock size={14} color="#F59E0B" />
+                          <Text style={[styles.statusPillText, { color: '#FBBF24' }]}>
                             Under Review
                           </Text>
                         </View>
@@ -297,7 +297,7 @@ export default function TasksScreen() {
                           <Text style={styles.submitProofBtnText}>
                             {isRejected ? 'Resubmit Proof' : 'Submit Proof'}
                           </Text>
-                          <ChevronRight size={14} color="#FFFFFF" />
+                          <ChevronRight size={14} color="#0A0B10" />
                         </TouchableOpacity>
                       )}
                     </View>
@@ -312,7 +312,7 @@ export default function TasksScreen() {
         {activeTab === 'submissions' && (
           <View style={styles.tasksList}>
             {isLoading ? (
-              <ActivityIndicator color="#7C3AED" style={{ marginVertical: 36 }} />
+              <ActivityIndicator color="#F59E0B" style={{ marginVertical: 36 }} />
             ) : submissions.length === 0 ? (
               <View style={styles.emptyWrap}>
                 <Clock size={40} color="#94A3B8" />
@@ -394,12 +394,12 @@ export default function TasksScreen() {
                 style={styles.closeBtn}
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               >
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
             <View style={styles.proofRewardBanner}>
-              <Award size={16} color="#7C3AED" />
+              <Award size={16} color="#F59E0B" />
               <Text style={styles.proofRewardBannerText}>
                 Earning Reward: <Text style={{ fontWeight: '800' }}>₹{selectedTask?.rewardAmount}</Text>
               </Text>
@@ -423,7 +423,7 @@ export default function TasksScreen() {
                   onPress={handlePickImage}
                   activeOpacity={0.8}
                 >
-                  <ImageIcon size={24} color="#7C3AED" />
+                  <ImageIcon size={24} color="#F59E0B" />
                   <Text style={styles.uploadOptionText}>Photo Library</Text>
                 </TouchableOpacity>
 
@@ -432,7 +432,7 @@ export default function TasksScreen() {
                   onPress={handleTakePhoto}
                   activeOpacity={0.8}
                 >
-                  <Camera size={24} color="#7C3AED" />
+                  <Camera size={24} color="#F59E0B" />
                   <Text style={styles.uploadOptionText}>Take Photo</Text>
                 </TouchableOpacity>
               </View>
@@ -440,7 +440,7 @@ export default function TasksScreen() {
 
             {submitError && (
               <View style={styles.errorBox}>
-                <AlertCircle size={15} color="#B91C1C" />
+                <AlertCircle size={15} color="#EF4444" />
                 <Text style={styles.errorText}>{submitError}</Text>
               </View>
             )}
@@ -496,7 +496,7 @@ export default function TasksScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -509,21 +509,25 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 2,
   },
   headerTitle: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
   },
   refreshBtn: {
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -535,6 +539,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 18,
     marginBottom: 16,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
   },
   heroTop: {
     flexDirection: 'row',
@@ -542,9 +552,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heroLabel: {
-    color: '#CBD5E1',
+    color: '#FBBF24',
     fontSize: 12,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   heroAmount: {
     color: '#FFFFFF',
@@ -553,23 +563,27 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
   heroSub: {
-    color: '#E2E8F0',
+    color: '#94A3B8',
     fontSize: 12,
   },
   giftIconWrap: {
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabToggleRow: {
     flexDirection: 'row',
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     borderRadius: 12,
     padding: 3,
     marginBottom: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.15)',
   },
   tabButton: {
     flex: 1,
@@ -578,16 +592,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   tabButtonActive: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(245, 158, 11, 0.2)',
     elevation: 2,
   },
   tabButtonText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
   },
   tabButtonTextActive: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   tasksList: {
@@ -600,7 +614,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#334155',
+    color: '#F8FAFC',
     marginTop: 12,
   },
   emptySub: {
@@ -611,11 +625,11 @@ const styles = StyleSheet.create({
     maxWidth: 260,
   },
   taskCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 16,
     padding: 16,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   taskCardTop: {
     flexDirection: 'row',
@@ -626,7 +640,9 @@ const styles = StyleSheet.create({
   taskTagBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 6,
@@ -635,10 +651,12 @@ const styles = StyleSheet.create({
   taskTagText: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   rewardPill: {
-    backgroundColor: '#F3E8FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderRadius: 12,
@@ -646,17 +664,17 @@ const styles = StyleSheet.create({
   rewardPillText: {
     fontSize: 13,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   taskTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 4,
   },
   taskDesc: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     marginBottom: 12,
   },
@@ -667,16 +685,16 @@ const styles = StyleSheet.create({
   submitProofBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderRadius: 10,
     gap: 4,
   },
   submitProofBtnText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 12.5,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   statusPill: {
     flexDirection: 'row',
@@ -691,11 +709,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   subCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 16,
     padding: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   subCardTop: {
     flexDirection: 'row',
@@ -705,11 +723,11 @@ const styles = StyleSheet.create({
   subTaskTitle: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   subDate: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 2,
   },
   statusBadge: {
@@ -724,7 +742,7 @@ const styles = StyleSheet.create({
   },
   subCardDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
     marginVertical: 10,
   },
   subCardBottom: {
@@ -735,29 +753,31 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 8,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
   },
   subRewardText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   subRemarkText: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     justifyContent: 'flex-end',
   },
   proofModalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     padding: 20,
     paddingBottom: Platform.OS === 'ios' ? 36 : 24,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   proofModalHeader: {
     flexDirection: 'row',
@@ -768,11 +788,11 @@ const styles = StyleSheet.create({
   proofModalTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   proofModalTaskName: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   closeBtn: {
@@ -781,7 +801,9 @@ const styles = StyleSheet.create({
   proofRewardBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F3E8FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     padding: 10,
     borderRadius: 10,
     marginBottom: 16,
@@ -789,7 +811,7 @@ const styles = StyleSheet.create({
   },
   proofRewardBannerText: {
     fontSize: 13,
-    color: '#6D28D9',
+    color: '#FBBF24',
   },
   uploadButtonsRow: {
     flexDirection: 'row',
@@ -798,9 +820,9 @@ const styles = StyleSheet.create({
   },
   uploadOptionBtn: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(245, 158, 11, 0.05)',
     borderWidth: 1.5,
-    borderColor: '#DDD6FE',
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     borderStyle: 'dashed',
     borderRadius: 14,
     paddingVertical: 24,
@@ -810,8 +832,8 @@ const styles = StyleSheet.create({
   },
   uploadOptionText: {
     fontSize: 12.5,
-    fontWeight: '600',
-    color: '#7C3AED',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
   proofPreviewWrap: {
     position: 'relative',
@@ -838,9 +860,9 @@ const styles = StyleSheet.create({
   errorBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
     borderWidth: 1,
-    borderColor: '#FCA5A5',
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     padding: 10,
     borderRadius: 10,
     marginBottom: 14,
@@ -848,12 +870,12 @@ const styles = StyleSheet.create({
   },
   errorText: {
     flex: 1,
-    color: '#B91C1C',
+    color: '#EF4444',
     fontSize: 12,
     fontWeight: '600',
   },
   modalSubmitBtn: {
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 14,
     borderRadius: 14,
     alignItems: 'center',
@@ -862,22 +884,30 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   modalSubmitBtnText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14.5,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   successCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 24,
     padding: 24,
     margin: 20,
     alignItems: 'center',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
   },
   successIconCircle: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#D1FAE5',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
@@ -885,18 +915,18 @@ const styles = StyleSheet.create({
   successTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   successDesc: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 18,
     marginBottom: 20,
   },
   successBtn: {
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 12,
@@ -904,8 +934,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   successBtnText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
   },
 });

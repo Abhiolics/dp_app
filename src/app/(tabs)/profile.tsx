@@ -217,21 +217,21 @@ export default function MyAssetScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       <ScrollView
         contentContainerStyle={[styles.scrollContent, { paddingTop: topPadding }]}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor="#7C3AED" />
+          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor="#F59E0B" />
         }
       >
-        {/* Top Header: Avatar & My Asset Title in Purple Theme */}
+        {/* Top Header: Avatar & My Asset Title in Dark Golden Theme */}
         <View style={styles.topHeader}>
-          {/* Avatar with purple brand border */}
+          {/* Avatar with gold brand border */}
           <View style={styles.avatarBorder}>
             <View style={styles.avatarInner}>
-              <User size={30} color="#7C3AED" />
+              <User size={30} color="#F59E0B" />
             </View>
           </View>
 
@@ -248,7 +248,7 @@ export default function MyAssetScreen() {
             {copiedId ? (
               <Check size={12} color="#10B981" style={{ marginLeft: 4 }} />
             ) : (
-              <Copy size={12} color="#94A3B8" style={{ marginLeft: 4 }} />
+              <Copy size={12} color="#FBBF24" style={{ marginLeft: 4 }} />
             )}
           </TouchableOpacity>
         </View>
@@ -256,7 +256,7 @@ export default function MyAssetScreen() {
         {/* 1. Full-Width Assets Card */}
         <View style={styles.assetCard}>
           <View style={styles.assetSquircle}>
-            <Banknote size={22} color="#7C3AED" />
+            <Banknote size={22} color="#F59E0B" />
           </View>
           <View style={styles.assetTextGroup}>
             <Text style={styles.assetLabel}>Assets</Text>
@@ -275,7 +275,7 @@ export default function MyAssetScreen() {
             activeOpacity={0.85}
           >
             <View style={styles.statSquircle}>
-              <Wallet size={20} color="#7C3AED" />
+              <Wallet size={20} color="#F59E0B" />
             </View>
             <View style={styles.statTextGroup}>
               <Text style={styles.statLabel}>Deposit</Text>
@@ -290,7 +290,7 @@ export default function MyAssetScreen() {
             activeOpacity={0.85}
           >
             <View style={styles.statSquircle}>
-              <Wallet size={20} color="#7C3AED" />
+              <Wallet size={20} color="#F59E0B" />
             </View>
             <View style={styles.statTextGroup}>
               <Text style={styles.statLabel}>Withdraw</Text>
@@ -312,9 +312,9 @@ export default function MyAssetScreen() {
                   onPress={item.onPress}
                   activeOpacity={0.7}
                 >
-                  {/* Left Icon Squircle in Purple */}
+                  {/* Left Icon Squircle in Gold */}
                   <View style={styles.optionIconSquircle}>
-                    <IconComp size={20} color="#7C3AED" />
+                    <IconComp size={20} color="#F59E0B" />
                   </View>
 
                   {/* Middle Text Info */}
@@ -337,21 +337,16 @@ export default function MyAssetScreen() {
           <Text style={styles.versionText}>v1.0.0.1</Text>
         </View>
 
-        {/* 4. Logout Button in Purple Theme */}
+        {/* 4. Logout Button */}
         <TouchableOpacity
           style={styles.logoutButtonWrap}
           onPress={() => setShowLogoutModal(true)}
           activeOpacity={0.85}
         >
-          <LinearGradient
-            colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.logoutGradient}
-          >
-            <LogOut size={18} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <View style={styles.logoutInner}>
+            <LogOut size={18} color="#EF4444" style={{ marginRight: 8 }} />
             <Text style={styles.logoutButtonText}>Logout</Text>
-          </LinearGradient>
+          </View>
         </TouchableOpacity>
 
         <View style={{ height: 110 }} />
@@ -363,11 +358,11 @@ export default function MyAssetScreen() {
           <View style={styles.modalCard}>
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <User size={20} color="#7C3AED" />
+                <User size={20} color="#F59E0B" />
                 <Text style={styles.modalTitle}>User Profile</Text>
               </View>
               <TouchableOpacity onPress={() => setShowProfileModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -378,7 +373,7 @@ export default function MyAssetScreen() {
                 value={editName}
                 onChangeText={setEditName}
                 placeholder="Enter full name"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
               />
             </View>
 
@@ -389,7 +384,7 @@ export default function MyAssetScreen() {
                 value={editPhone}
                 onChangeText={setEditPhone}
                 placeholder="e.g. +91 9876543210"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
                 keyboardType="phone-pad"
               />
             </View>
@@ -401,7 +396,7 @@ export default function MyAssetScreen() {
 
             <View style={styles.modalFieldGroup}>
               <Text style={styles.fieldLabel}>Current Plan Tier</Text>
-              <Text style={[styles.fieldStaticText, { color: '#7C3AED', fontWeight: '700' }]}>
+              <Text style={[styles.fieldStaticText, { color: '#FBBF24', fontWeight: '700' }]}>
                 {user?.plan?.name || 'VIP Tier'}
               </Text>
             </View>
@@ -414,11 +409,18 @@ export default function MyAssetScreen() {
               disabled={isUpdating}
               activeOpacity={0.8}
             >
-              {isUpdating ? (
-                <ActivityIndicator color="#FFFFFF" size="small" />
-              ) : (
-                <Text style={styles.saveProfileBtnText}>Save Changes</Text>
-              )}
+              <LinearGradient
+                colors={['#FDE047', '#F59E0B', '#D97706']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.goldBtnGradient}
+              >
+                {isUpdating ? (
+                  <ActivityIndicator color="#0A0B10" size="small" />
+                ) : (
+                  <Text style={styles.saveProfileBtnText}>Save Changes</Text>
+                )}
+              </LinearGradient>
             </TouchableOpacity>
           </View>
         </View>
@@ -430,11 +432,11 @@ export default function MyAssetScreen() {
           <View style={styles.modalCard}>
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <CreditCard size={20} color="#7C3AED" />
+                <CreditCard size={20} color="#F59E0B" />
                 <Text style={styles.modalTitle}>Settlement Account</Text>
               </View>
               <TouchableOpacity onPress={() => setShowAccountModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -481,11 +483,11 @@ export default function MyAssetScreen() {
           <View style={styles.modalCard}>
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Gift size={20} color="#7C3AED" />
+                <Gift size={20} color="#F59E0B" />
                 <Text style={styles.modalTitle}>Redeem Gift Code</Text>
               </View>
               <TouchableOpacity onPress={() => setShowGiftModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -496,7 +498,7 @@ export default function MyAssetScreen() {
             <TextInput
               style={styles.giftInput}
               placeholder="e.g. BONUS2026"
-              placeholderTextColor="#94A3B8"
+              placeholderTextColor="#64748B"
               value={giftCode}
               onChangeText={setGiftCode}
               autoCapitalize="characters"
@@ -506,13 +508,13 @@ export default function MyAssetScreen() {
               <View
                 style={[
                   styles.giftAlert,
-                  { backgroundColor: giftResult.isError ? '#FEE2E2' : '#DCFCE7' },
+                  { backgroundColor: giftResult.isError ? 'rgba(239, 68, 68, 0.15)' : 'rgba(16, 185, 129, 0.15)' },
                 ]}
               >
                 <Text
                   style={[
                     styles.giftAlertText,
-                    { color: giftResult.isError ? '#DC2626' : '#15803D' },
+                    { color: giftResult.isError ? '#EF4444' : '#10B981' },
                   ]}
                 >
                   {giftResult.text}
@@ -526,11 +528,18 @@ export default function MyAssetScreen() {
               disabled={isRedeeming}
               activeOpacity={0.8}
             >
-              {isRedeeming ? (
-                <ActivityIndicator color="#FFFFFF" size="small" />
-              ) : (
-                <Text style={styles.redeemBtnText}>Redeem Code</Text>
-              )}
+              <LinearGradient
+                colors={['#FDE047', '#F59E0B', '#D97706']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.goldBtnGradient}
+              >
+                {isRedeeming ? (
+                  <ActivityIndicator color="#0A0B10" size="small" />
+                ) : (
+                  <Text style={styles.redeemBtnText}>Redeem Code</Text>
+                )}
+              </LinearGradient>
             </TouchableOpacity>
           </View>
         </View>
@@ -546,12 +555,12 @@ export default function MyAssetScreen() {
                 <Text style={[styles.modalTitle, { color: '#EF4444' }]}>Log Out</Text>
               </View>
               <TouchableOpacity onPress={() => setShowLogoutModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
             <Text style={styles.accountDesc}>
-              Are you sure you want to log out of your PayU account? You will need to sign in again to access your assets.
+              Are you sure you want to log out of your DreamPay account? You will need to sign in again to access your assets.
             </Text>
 
             <View style={styles.logoutBtnRow}>
@@ -581,11 +590,11 @@ export default function MyAssetScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   scrollContent: {
     paddingHorizontal: 16,
-    paddingBottom: 24,
+    paddingBottom: 110,
   },
 
   // Top Header: Avatar & Title
@@ -598,14 +607,14 @@ const styles = StyleSheet.create({
     height: 68,
     borderRadius: 34,
     borderWidth: 2,
-    borderColor: '#7C3AED',
+    borderColor: '#F59E0B',
     padding: 3,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F5F3FF',
-    shadowColor: '#7C3AED',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.35,
     shadowRadius: 10,
     elevation: 4,
     marginBottom: 10,
@@ -614,22 +623,22 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 30,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.18)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   myAssetTitle: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.3,
   },
   userIdPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 14,
     paddingHorizontal: 10,
     paddingVertical: 3,
@@ -637,31 +646,33 @@ const styles = StyleSheet.create({
   },
   userIdText: {
     fontSize: 11.5,
-    fontWeight: '600',
-    color: '#64748B',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
 
   // 1. Assets Full-Width Card
   assetCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
     shadowRadius: 8,
-    elevation: 2,
+    elevation: 3,
   },
   assetSquircle: {
     width: 48,
     height: 48,
     borderRadius: 14,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 14,
@@ -672,13 +683,13 @@ const styles = StyleSheet.create({
   assetLabel: {
     fontSize: 13,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 2,
   },
   assetValue: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
 
   // 2. Row of 2 Cards: Deposit & Withdraw
@@ -691,22 +702,24 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 14,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
     shadowRadius: 8,
-    elevation: 2,
+    elevation: 3,
   },
   statSquircle: {
     width: 42,
     height: 42,
     borderRadius: 12,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 10,
@@ -718,29 +731,29 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 12.5,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 2,
   },
   statValue: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
 
   // 3. Options List Card (ALL 6 OPTIONS AS ROWS)
   optionsListCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 20,
     paddingVertical: 6,
     paddingHorizontal: 16,
     marginBottom: 20,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 2,
+    elevation: 3,
   },
   optionRow: {
     flexDirection: 'row',
@@ -751,7 +764,9 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 14,
@@ -762,22 +777,22 @@ const styles = StyleSheet.create({
   optionLabel: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 2,
   },
   optionSublabel: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   optionDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
     marginLeft: 58,
   },
   versionText: {
     fontSize: 11.5,
-    color: '#94A3B8',
+    color: '#64748B',
     textAlign: 'right',
     paddingTop: 10,
     paddingBottom: 6,
@@ -786,44 +801,43 @@ const styles = StyleSheet.create({
 
   // 4. Logout Button
   logoutButtonWrap: {
-    borderRadius: 20,
+    borderRadius: 18,
     overflow: 'hidden',
-    shadowColor: '#7C3AED',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 4,
+    borderWidth: 1.2,
+    borderColor: 'rgba(239, 68, 68, 0.35)',
+    backgroundColor: 'rgba(239, 68, 68, 0.08)',
   },
-  logoutGradient: {
+  logoutInner: {
     flexDirection: 'row',
     paddingVertical: 14,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 20,
   },
   logoutButtonText: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: '#EF4444',
   },
 
   // Modals
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 20,
     padding: 20,
     width: '100%',
     maxWidth: 380,
-    shadowColor: '#000',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -835,8 +849,8 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
   },
   modalFieldGroup: {
     marginBottom: 12,
@@ -844,23 +858,23 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 4,
   },
   fieldInput: {
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 10,
     fontSize: 14,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
   },
   fieldStaticText: {
     fontSize: 14,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
     paddingVertical: 6,
   },
@@ -870,31 +884,34 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   saveProfileBtn: {
-    backgroundColor: '#7C3AED',
-    paddingVertical: 12,
     borderRadius: 12,
-    alignItems: 'center',
+    overflow: 'hidden',
     marginTop: 6,
+  },
+  goldBtnGradient: {
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   saveProfileBtnText: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
 
   // Account Modal
   accountDesc: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     marginBottom: 14,
   },
   accountInfoCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(245, 158, 11, 0.05)',
     borderRadius: 14,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
     gap: 8,
     marginBottom: 14,
   },
@@ -905,36 +922,38 @@ const styles = StyleSheet.create({
   },
   accountRowLabel: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   accountRowVal: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   manageWithdrawBtn: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
   },
   manageWithdrawBtnText: {
     fontSize: 13.5,
-    fontWeight: '600',
-    color: '#475569',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
 
   // Gift Modal
   giftInput: {
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 12,
     fontSize: 15,
-    color: '#0F172A',
-    fontWeight: '600',
+    color: '#F8FAFC',
+    fontWeight: '700',
     marginBottom: 12,
   },
   giftAlert: {
@@ -948,15 +967,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   redeemBtn: {
-    backgroundColor: '#7C3AED',
-    paddingVertical: 12,
     borderRadius: 12,
-    alignItems: 'center',
+    overflow: 'hidden',
   },
   redeemBtnText: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
 
   // Logout Modal
@@ -967,7 +984,9 @@ const styles = StyleSheet.create({
   },
   cancelLogoutBtn: {
     flex: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
@@ -975,7 +994,7 @@ const styles = StyleSheet.create({
   cancelLogoutBtnText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#475569',
+    color: '#94A3B8',
   },
   confirmLogoutBtn: {
     flex: 1,

@@ -109,7 +109,7 @@ export default function MessagesScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -118,7 +118,7 @@ export default function MessagesScreen() {
           style={styles.backButton}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Notifications</Text>
@@ -129,7 +129,7 @@ export default function MessagesScreen() {
             style={styles.markAllBtn}
             activeOpacity={0.7}
           >
-            <CheckCheck size={16} color="#7C3AED" />
+            <CheckCheck size={16} color="#F59E0B" />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -137,7 +137,7 @@ export default function MessagesScreen() {
             style={styles.markAllBtn}
             activeOpacity={0.7}
           >
-            <RefreshCw size={15} color="#64748B" />
+            <RefreshCw size={15} color="#F59E0B" />
           </TouchableOpacity>
         </View>
       </View>
@@ -168,10 +168,10 @@ export default function MessagesScreen() {
         showsVerticalScrollIndicator={false}
       >
         {isLoading ? (
-          <ActivityIndicator color="#7C3AED" style={{ marginVertical: 36 }} />
+          <ActivityIndicator color="#F59E0B" style={{ marginVertical: 36 }} />
         ) : filteredList.length === 0 ? (
           <View style={styles.emptyCard}>
-            <Bell size={40} color="#94A3B8" />
+            <Bell size={40} color="#64748B" />
             <Text style={styles.emptyTitle}>No Notifications</Text>
             <Text style={styles.emptySubtitle}>
               {filter === 'Unread'
@@ -228,7 +228,7 @@ export default function MessagesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -241,15 +241,16 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 2,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   headerRightActions: {
     flexDirection: 'row',
@@ -259,10 +260,11 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 2,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   filterRow: {
     flexDirection: 'row',
@@ -274,19 +276,22 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 14,
     borderRadius: 10,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   filterTabActive: {
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
+    borderColor: '#F59E0B',
   },
   filterTabText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
   },
   filterTabTextActive: {
-    color: '#FFFFFF',
-    fontWeight: '700',
+    color: '#0A0B10',
+    fontWeight: '800',
   },
   scrollContent: {
     paddingHorizontal: 16,
@@ -294,16 +299,18 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   emptyCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 18,
     padding: 36,
     alignItems: 'center',
     marginTop: 20,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   emptyTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#334155',
+    color: '#F8FAFC',
     marginTop: 12,
   },
   emptySubtitle: {
@@ -314,15 +321,15 @@ const styles = StyleSheet.create({
     maxWidth: 260,
   },
   notificationCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 16,
     padding: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   unreadCard: {
-    borderColor: '#DDD6FE',
-    backgroundColor: '#FAF8FF',
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    backgroundColor: '#181A26',
   },
   cardHeaderRow: {
     flexDirection: 'row',
@@ -334,34 +341,34 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34,
     borderRadius: 17,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   cardTitle: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#1E293B',
+    color: '#CBD5E1',
   },
   unreadTitle: {
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   cardTime: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 1,
   },
   unreadDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     marginRight: 4,
   },
   cardMessage: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
   },
 });

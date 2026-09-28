@@ -260,7 +260,7 @@ export default function CardScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Sticky Top Section: Header & Big Hero Card */}
       <View style={[styles.stickyTopContainer, { paddingTop: topPadding }]}>
@@ -271,8 +271,8 @@ export default function CardScreen() {
 
         {/* 1. Sticky Big Hero Card (Cashback Rate 3.8% + Vertical Ascending Bars Graphic) */}
         <LinearGradient
-          colors={['#4C1D95', '#6D28D9', '#7C3AED', '#8B5CF6']}
-          locations={[0, 0.35, 0.72, 1]}
+          colors={['#2A1F08', '#1A1510', '#100E0A']}
+          locations={[0, 0.5, 1]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.heroCard}
@@ -375,7 +375,7 @@ export default function CardScreen() {
 
         {/* 5. Offers List */}
         {isLoading ? (
-          <ActivityIndicator color="#7C3AED" style={{ marginVertical: 40 }} />
+          <ActivityIndicator color="#F59E0B" style={{ marginVertical: 40 }} />
         ) : displayedOffers.length === 0 ? (
           <View style={styles.emptyContainer}>
             <CreditCard size={40} color="#94A3B8" />
@@ -407,7 +407,7 @@ export default function CardScreen() {
                       <Text style={styles.codeLabel}>Code: </Text>
                       <Text style={styles.codeValue}>{item.code}</Text>
                       {isCopied ? (
-                        <Check size={12} color="#10B981" style={{ marginLeft: 3 }} />
+                        <Check size={12} color="#F59E0B" style={{ marginLeft: 3 }} />
                       ) : (
                         <Copy size={12} color="#94A3B8" style={{ marginLeft: 3 }} />
                       )}
@@ -439,7 +439,7 @@ export default function CardScreen() {
                       activeOpacity={0.85}
                     >
                       <LinearGradient
-                        colors={['#F59E0B', '#EAB308']}
+                        colors={['#FDE047', '#F59E0B', '#D97706']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
                         style={styles.claimButtonGradient}
@@ -463,11 +463,11 @@ export default function CardScreen() {
           <View style={styles.modalCard}>
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Sparkles size={20} color="#7C3AED" />
+                <Sparkles size={20} color="#F59E0B" />
                 <Text style={styles.modalTitle}>Claim Cashback Offer</Text>
               </View>
               <TouchableOpacity onPress={() => setSelectedOffer(null)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -489,7 +489,7 @@ export default function CardScreen() {
 
                 <View style={styles.detailRow}>
                   <Text style={styles.detailLabel}>Bonus Incentive</Text>
-                  <Text style={[styles.detailValueBold, { color: '#10B981' }]}>
+                  <Text style={[styles.detailValueBold, { color: '#FBBF24' }]}>
                     {selectedOffer.specialBonus}
                   </Text>
                 </View>
@@ -505,7 +505,7 @@ export default function CardScreen() {
                   activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={['#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.confirmClaimGradient}
@@ -527,10 +527,10 @@ export default function CardScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   stickyTopContainer: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
     paddingHorizontal: 16,
     paddingBottom: 8,
     zIndex: 10,
@@ -543,19 +543,21 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   scrollContent: {
     paddingHorizontal: 16,
     paddingTop: 8,
-    paddingBottom: 24,
+    paddingBottom: 110,
   },
 
   // 1. Hero Card
   heroCard: {
     borderRadius: 20,
     padding: 18,
-    shadowColor: '#7C3AED',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.25,
     shadowRadius: 16,
@@ -569,13 +571,13 @@ const styles = StyleSheet.create({
   heroLabel: {
     fontSize: 14,
     fontWeight: '600',
-    color: 'rgba(255, 255, 255, 0.85)',
+    color: '#FBBF24',
     marginBottom: 2,
   },
   heroRateText: {
     fontSize: 36,
     fontWeight: '900',
-    color: '#FDE047', // Vibrant warm golden amber
+    color: '#FDE047',
     letterSpacing: -0.5,
   },
   barChartContainer: {
@@ -588,11 +590,11 @@ const styles = StyleSheet.create({
   barItem: {
     width: 6,
     borderRadius: 3,
-    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    backgroundColor: '#F59E0B',
   },
   heroDivider: {
     height: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(245, 158, 11, 0.25)',
     marginVertical: 14,
   },
   heroStatsRow: {
@@ -618,16 +620,16 @@ const styles = StyleSheet.create({
   statVerticalDivider: {
     width: 1,
     height: 24,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(245, 158, 11, 0.25)',
   },
 
   // 2. Notice Banner
   noticeBanner: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFBEB',
-    borderWidth: 1.5,
-    borderColor: '#FDE68A',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 10,
@@ -638,7 +640,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 12,
     fontWeight: '600',
-    color: '#92400E',
+    color: '#FDE047',
     lineHeight: 16,
   },
 
@@ -652,7 +654,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   refreshesDailyText: {
     fontSize: 12,
@@ -671,9 +673,9 @@ const styles = StyleSheet.create({
   },
   filterPill: {
     borderRadius: 20,
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
-    backgroundColor: '#FFFFFF',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     overflow: 'hidden',
   },
   filterPillActive: {
@@ -686,13 +688,13 @@ const styles = StyleSheet.create({
   },
   filterPillTextActive: {
     fontSize: 13,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
   filterPillTextInactive: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
     paddingHorizontal: 16,
     paddingVertical: 7,
   },
@@ -702,15 +704,15 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   offerCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 16,
     padding: 16,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
-    shadowColor: '#000',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
-    shadowRadius: 6,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
     elevation: 2,
   },
   offerTopRow: {
@@ -727,18 +729,20 @@ const styles = StyleSheet.create({
   currencyText: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   specialBadge: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(245, 158, 11, 0.18)',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 6,
+    borderWidth: 0.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   specialBadgeText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#FDE047',
   },
   codeRow: {
     flexDirection: 'row',
@@ -746,13 +750,13 @@ const styles = StyleSheet.create({
   },
   codeLabel: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   codeValue: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#FBBF24',
   },
 
   offerBottomRow: {
@@ -769,19 +773,19 @@ const styles = StyleSheet.create({
   },
   metricLabel: {
     fontSize: 11.5,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
     marginBottom: 2,
   },
   metricValueAmount: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   metricValueIncome: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#D97706', // Warm amber income
+    color: '#FBBF24',
   },
   claimButtonWrap: {
     borderRadius: 8,
@@ -794,8 +798,8 @@ const styles = StyleSheet.create({
   },
   claimButtonText: {
     fontSize: 13.5,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
 
   // Empty State
@@ -808,7 +812,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#334155',
+    color: '#F8FAFC',
     marginTop: 12,
   },
   emptySub: {
@@ -821,20 +825,22 @@ const styles = StyleSheet.create({
   // Modal
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 20,
     padding: 20,
     width: '100%',
     maxWidth: 380,
-    shadowColor: '#000',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -847,27 +853,27 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   modalBody: {
     gap: 12,
   },
   modalHeroBox: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     borderRadius: 14,
     padding: 16,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.28)',
   },
   modalOfferAmount: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#FDE047',
   },
   modalOfferSub: {
     fontSize: 12,
-    color: '#D97706',
+    color: '#FBBF24',
     fontWeight: '600',
     marginTop: 4,
     textAlign: 'center',
@@ -880,17 +886,17 @@ const styles = StyleSheet.create({
   },
   detailLabel: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   detailValue: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   detailValueBold: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   confirmClaimBtn: {
     borderRadius: 12,
@@ -903,8 +909,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   confirmClaimText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
   },
 });

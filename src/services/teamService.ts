@@ -19,7 +19,7 @@ export interface TeamStats {
 export const getTeamStats = async (user?: { _id?: string; id?: string } | null): Promise<TeamStats> => {
   const userId = user?._id || user?.id || 'MEMBER';
   const inviteCode = userId.slice(-6).toUpperCase();
-  const inviteLink = `https://payu.trade/invite?code=${inviteCode}`;
+  const inviteLink = `https://dreampay.vip/invite?code=${inviteCode}`;
 
   try {
     // Attempt backend API if available

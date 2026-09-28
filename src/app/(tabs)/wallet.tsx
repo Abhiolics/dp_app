@@ -283,7 +283,7 @@ export default function PaymentHistoryScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header matching design */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -294,7 +294,7 @@ export default function PaymentHistoryScreen() {
               onPress={() => router.back()}
               activeOpacity={0.7}
             >
-              <ArrowLeft size={20} color="#0F172A" />
+              <ArrowLeft size={20} color="#F8FAFC" />
             </TouchableOpacity>
           )}
         </View>
@@ -307,7 +307,7 @@ export default function PaymentHistoryScreen() {
             onPress={() => setShowGiftModal(true)}
             activeOpacity={0.7}
           >
-            <Gift size={18} color="#7C3AED" />
+            <Gift size={18} color="#F59E0B" />
           </TouchableOpacity>
         </View>
       </View>
@@ -316,7 +316,7 @@ export default function PaymentHistoryScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor="#7C3AED" />
+          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} tintColor="#F59E0B" />
         }
       >
         {/* Segmented Control [ Receive | Purchase ] */}
@@ -332,7 +332,7 @@ export default function PaymentHistoryScreen() {
           >
             {activeTab === 'Receive' ? (
               <LinearGradient
-                colors={['#F59E0B', '#EAB308']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.segmentGradient}
@@ -355,7 +355,7 @@ export default function PaymentHistoryScreen() {
           >
             {activeTab === 'Purchase' ? (
               <LinearGradient
-                colors={['#F59E0B', '#EAB308']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.segmentGradient}
@@ -592,17 +592,17 @@ export default function PaymentHistoryScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingBottom: 14,
-    backgroundColor: '#FFFFFF',
+    paddingBottom: 12,
+    backgroundColor: '#0A0B10',
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(255, 255, 255, 0.05)',
   },
   headerSide: {
     width: 40,
@@ -614,12 +614,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
     textAlign: 'center',
   },
   giftIconBtn: {
@@ -628,21 +630,24 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.16)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   scrollContent: {
     paddingTop: 16,
     paddingHorizontal: 16,
+    paddingBottom: 110,
   },
 
   // Segmented Control
   segmentedContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     borderRadius: 12,
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     padding: 3,
     marginBottom: 16,
   },
@@ -666,27 +671,27 @@ const styles = StyleSheet.create({
   },
   segmentTextActive: {
     fontSize: 14.5,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
   segmentTextInactive: {
     fontSize: 14.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
   },
 
-  // Payment Card (matching design in light theme)
+  // Payment Card (Dark Golden Glass Card)
   paymentCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 16,
     padding: 18,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     marginBottom: 12,
-    shadowColor: '#000',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
-    shadowRadius: 6,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
     elevation: 2,
   },
   cardTopRow: {
@@ -698,7 +703,7 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.5,
   },
   statusBadge: {
@@ -725,12 +730,12 @@ const styles = StyleSheet.create({
   },
   orderCodeLabel: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   orderCodeValue: {
     fontSize: 13.5,
-    color: '#0F172A',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   dateTimeContainer: {
@@ -738,12 +743,12 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   dateText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
     marginTop: 2,
   },
@@ -758,7 +763,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#334155',
+    color: '#F8FAFC',
     marginTop: 14,
   },
   emptySubtitle: {
@@ -772,20 +777,22 @@ const styles = StyleSheet.create({
   // Modals
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 20,
     padding: 20,
     width: '100%',
     maxWidth: 380,
-    shadowColor: '#000',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -798,7 +805,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   modalBody: {
     gap: 10,
@@ -812,11 +819,11 @@ const styles = StyleSheet.create({
   modalAmount: {
     fontSize: 26,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#FDE047',
   },
   detailDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     marginVertical: 4,
   },
   detailRow: {
@@ -830,53 +837,55 @@ const styles = StyleSheet.create({
   },
   detailLabel: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   detailValue: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   detailValueBold: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   detailDesc: {
     fontSize: 12.5,
-    color: '#334155',
+    color: '#CBD5E1',
     lineHeight: 18,
     marginTop: 4,
   },
   modalCloseBtn: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
     marginTop: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
   },
   modalCloseBtnText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#475569',
+    color: '#F8FAFC',
   },
 
   // Gift Modal
   giftModalDesc: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#CBD5E1',
     lineHeight: 18,
     marginBottom: 14,
   },
   giftInput: {
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 12,
     fontSize: 15,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
     marginBottom: 12,
   },
@@ -891,14 +900,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   redeemSubmitBtn: {
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
   },
   redeemSubmitBtnText: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
 });

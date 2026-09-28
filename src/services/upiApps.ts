@@ -32,7 +32,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#F5EEFD',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(PhonePeIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `phonepe://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -46,7 +46,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#EBF8FF',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(PaytmIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `paytmmp://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -60,7 +60,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#EFF6FF',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(GooglePayIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `tez://upi/pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -74,7 +74,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#F4F4F5',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(CredIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `credpay://upi/pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -88,7 +88,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#F0FDFA',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(BhimIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `bhim://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -102,7 +102,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
     accentBg: '#FFF7ED',
     badgeTextColor: '#FFFFFF',
     renderLogo: (size = 44) => React.createElement(AmazonPayIcon, { size }),
-    buildUrl: ({ upiId, amount, name = 'PayU Deposit' }) => {
+    buildUrl: ({ upiId, amount, name = 'DreamPay Deposit' }) => {
       const am = parseFloat(amount || '0').toFixed(2);
       return `amazonpay://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${am}&cu=INR&tn=${encodeURIComponent('Deposit')}`;
     },
@@ -112,7 +112,7 @@ export const SUPPORTED_UPI_APPS: SupportedUpiApp[] = [
 export function buildGenericUpiUrl({
   upiId,
   amount,
-  name = 'PayU Deposit',
+  name = 'DreamPay Deposit',
 }: {
   upiId: string;
   amount: string;
@@ -161,7 +161,7 @@ export async function launchUpiPayment({
   app,
   upiId,
   amount,
-  name = 'PayU Deposit',
+  name = 'DreamPay Deposit',
 }: {
   app?: SupportedUpiApp;
   upiId: string;

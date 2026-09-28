@@ -34,7 +34,7 @@ export default function RecentTransactions() {
           onPress={() => router.push('/(tabs)/wallet')}
         >
           <Text style={styles.seeAllText}>See All</Text>
-          <ChevronRight size={15} color="#4F46E5" strokeWidth={2.5} />
+          <ChevronRight size={15} color="#F59E0B" strokeWidth={2.5} />
         </TouchableOpacity>
       </View>
 
@@ -50,13 +50,13 @@ export default function RecentTransactions() {
             style={styles.buttonWrapper}
           >
             <LinearGradient
-              colors={['#4338CA', '#4F46E5', '#6366F1']}
+              colors={['#FDE047', '#F59E0B', '#D97706']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               style={styles.topUpButton}
             >
               <Text style={styles.topUpText}>Deposit Now</Text>
-              <ArrowRight size={16} color="#FFFFFF" strokeWidth={2.5} />
+              <ArrowRight size={16} color="#0A0B10" strokeWidth={2.5} />
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -77,13 +77,13 @@ export default function RecentTransactions() {
                 <View
                   style={[
                     styles.txIconWrap,
-                    { backgroundColor: isCredit ? '#EDE9FE' : '#FEE2E2' },
+                    { backgroundColor: isCredit ? 'rgba(245, 158, 11, 0.16)' : 'rgba(239, 68, 68, 0.14)' },
                   ]}
                 >
                   {isCredit ? (
-                    <ArrowDownLeft size={16} color="#7C3AED" />
+                    <ArrowDownLeft size={16} color="#F59E0B" />
                   ) : (
-                    <ArrowUpRight size={16} color="#DC2626" />
+                    <ArrowUpRight size={16} color="#EF4444" />
                   )}
                 </View>
 
@@ -102,7 +102,7 @@ export default function RecentTransactions() {
                 <Text
                   style={[
                     styles.txAmount,
-                    { color: isCredit ? '#10B981' : '#0F172A' },
+                    { color: isCredit ? '#FBBF24' : '#F87171' },
                   ]}
                 >
                   {isCredit ? '+' : '-'} ₹{tx.amount.toLocaleString()}
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   headerTitle: {
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontSize: 18,
     fontWeight: '700',
     letterSpacing: -0.2,
@@ -139,29 +139,29 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   seeAllText: {
-    color: '#4F46E5',
+    color: '#F59E0B',
     fontSize: 13.5,
     fontWeight: '600',
   },
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     marginHorizontal: 16,
     borderRadius: 20,
     paddingVertical: 26,
     paddingHorizontal: 20,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     elevation: 2,
   },
   emptyTitle: {
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontSize: 15,
     fontWeight: '700',
     marginTop: 12,
   },
   emptySubtitle: {
-    color: '#64748B',
+    color: '#94A3B8',
     fontSize: 13,
     marginTop: 4,
     marginBottom: 16,
@@ -169,6 +169,10 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     borderRadius: 24,
     overflow: 'hidden',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
   },
   topUpButton: {
     flexDirection: 'row',
@@ -178,18 +182,18 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   topUpText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   listCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     marginHorizontal: 16,
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 6,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     elevation: 2,
   },
   txItem: {
@@ -200,7 +204,7 @@ const styles = StyleSheet.create({
   },
   txItemBorder: {
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(255, 255, 255, 0.06)',
   },
   txIconWrap: {
     width: 36,
@@ -212,7 +216,7 @@ const styles = StyleSheet.create({
   txDesc: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   txDate: {
     fontSize: 11,

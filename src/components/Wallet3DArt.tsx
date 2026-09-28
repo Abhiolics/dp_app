@@ -17,23 +17,23 @@ export default function Wallet3DArt() {
     <View style={styles.container}>
       <Svg width="165" height="135" viewBox="0 0 165 135" fill="none">
         <Defs>
-          {/* Wallet Body Gradient */}
+          {/* Wallet Body Gradient - Deep Obsidian with Gold Sheen */}
           <LinearGradient id="walletGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#8B5CF6" />
-            <Stop offset="60%" stopColor="#6D28D9" />
-            <Stop offset="100%" stopColor="#5B21B6" />
+            <Stop offset="0%" stopColor="#3D2D16" />
+            <Stop offset="60%" stopColor="#241B0D" />
+            <Stop offset="100%" stopColor="#150F07" />
           </LinearGradient>
 
-          {/* Wallet Flap Gradient */}
+          {/* Wallet Flap Gradient - Pure Gold */}
           <LinearGradient id="flapGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#A78BFA" />
-            <Stop offset="100%" stopColor="#7C3AED" />
+            <Stop offset="0%" stopColor="#FDE047" />
+            <Stop offset="100%" stopColor="#B45309" />
           </LinearGradient>
 
-          {/* Credit Card Gradient */}
+          {/* Credit Card Gradient - Champagne Gold */}
           <LinearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#C084FC" />
-            <Stop offset="100%" stopColor="#7C3AED" />
+            <Stop offset="0%" stopColor="#FEF08A" />
+            <Stop offset="100%" stopColor="#D97706" />
           </LinearGradient>
 
           {/* Gold Coin Front Gradient */}
@@ -49,10 +49,10 @@ export default function Wallet3DArt() {
             <Stop offset="100%" stopColor="#B45309" />
           </LinearGradient>
 
-          {/* Soft Shadow Filter Effect */}
+          {/* Soft Shadow Filter Effect - Warm Gold Ambient */}
           <RadialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-            <Stop offset="0%" stopColor="rgba(167, 139, 250, 0.4)" />
-            <Stop offset="100%" stopColor="rgba(167, 139, 250, 0)" />
+            <Stop offset="0%" stopColor="rgba(245, 158, 11, 0.35)" />
+            <Stop offset="100%" stopColor="rgba(245, 158, 11, 0)" />
           </RadialGradient>
         </Defs>
 

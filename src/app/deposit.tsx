@@ -183,7 +183,7 @@ export default function DepositScreen() {
 
   // Generate dynamic QR code URL based on current amount and UPI ID
   const dynamicQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&data=${encodeURIComponent(
-    `upi://pay?pa=${upiId}&pn=PayU&am=${amount || '1000'}&cu=INR`
+    `upi://pay?pa=${upiId}&pn=DreamPay&am=${amount || '1000'}&cu=INR`
   )}`;
   const displayQrUrl = customQrImage || dynamicQrUrl;
 
@@ -194,7 +194,7 @@ export default function DepositScreen() {
         app,
         upiId,
         amount: amount || '1000',
-        name: 'PayU Deposit',
+        name: 'DreamPay Deposit',
       });
     } finally {
       setTimeout(() => {
@@ -310,7 +310,7 @@ export default function DepositScreen() {
       style={styles.safeArea}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Top Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -325,7 +325,7 @@ export default function DepositScreen() {
           }}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" strokeWidth={2.4} />
+          <ArrowLeft size={20} color="#F8FAFC" strokeWidth={2.4} />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Deposit</Text>
@@ -335,7 +335,7 @@ export default function DepositScreen() {
           onPress={() => setActiveTab(activeTab === 'deposit' ? 'history' : 'deposit')}
           activeOpacity={0.7}
         >
-          <Clock size={19} color={activeTab === 'history' ? '#FFFFFF' : '#7C3AED'} strokeWidth={2.2} />
+          <Clock size={19} color={activeTab === 'history' ? '#0A0B10' : '#F59E0B'} strokeWidth={2.2} />
         </TouchableOpacity>
       </View>
 
@@ -348,7 +348,7 @@ export default function DepositScreen() {
           {/* SECTION 1: UPI PAYMENT */}
           <View style={styles.sectionHeader}>
             <View style={styles.sectionIconBadge}>
-              <QrCode size={18} color="#7C3AED" strokeWidth={2.4} />
+              <QrCode size={18} color="#F59E0B" strokeWidth={2.4} />
             </View>
             <Text style={styles.sectionTitle}>UPI Payment</Text>
           </View>
@@ -357,12 +357,12 @@ export default function DepositScreen() {
           <View style={styles.qrCard}>
             {isLoadingMethods ? (
               <View style={styles.qrLoaderBox}>
-                <ActivityIndicator size="large" color="#7C3AED" />
+                <ActivityIndicator size="large" color="#F59E0B" />
                 <Text style={styles.qrLoaderText}>Generating secure UPI QR code...</Text>
               </View>
             ) : (
               <View style={styles.qrFrameWrapper}>
-                {/* Purple glowing corner brackets matching Image 1 */}
+                {/* Gold glowing corner brackets */}
                 <View style={styles.cornerBracketTL} />
                 <View style={styles.cornerBracketBR} />
 
@@ -374,14 +374,14 @@ export default function DepositScreen() {
                     resizeMode="contain"
                   />
 
-                  {/* Centered Zoom button when blurred (matches Image 1) */}
+                  {/* Centered Zoom button when blurred */}
                   {isQrBlurred && (
                     <TouchableOpacity
                       style={styles.qrCenterZoomBtn}
                       onPress={() => setIsQrBlurred(false)}
                       activeOpacity={0.82}
                     >
-                      <ZoomIn size={32} color="#0F172A" strokeWidth={2.4} />
+                      <ZoomIn size={32} color="#F59E0B" strokeWidth={2.4} />
                     </TouchableOpacity>
                   )}
 
@@ -392,7 +392,7 @@ export default function DepositScreen() {
                       onPress={() => setIsQrBlurred(true)}
                       activeOpacity={0.78}
                     >
-                      <ZoomOut size={13} color="#7C3AED" strokeWidth={2.2} />
+                      <ZoomOut size={13} color="#F59E0B" strokeWidth={2.2} />
                       <Text style={styles.hideQrPillText}>Hide QR</Text>
                     </TouchableOpacity>
                   )}
@@ -410,12 +410,12 @@ export default function DepositScreen() {
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                  colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                  colors={['#FDE047', '#F59E0B', '#D97706']}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={styles.viewQrGradient}
                 >
-                  <ZoomIn size={16} color="#FFFFFF" strokeWidth={2.5} />
+                  <ZoomIn size={16} color="#0A0B10" strokeWidth={2.5} />
                   <Text style={styles.viewQrCtaText}>View QR Code</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -438,7 +438,7 @@ export default function DepositScreen() {
               {copiedFeedback ? (
                 <Check size={16} color="#10B981" strokeWidth={2.5} />
               ) : (
-                <Copy size={16} color="#7C3AED" strokeWidth={2} />
+                <Copy size={16} color="#F59E0B" strokeWidth={2} />
               )}
             </TouchableOpacity>
             {copiedFeedback && (
@@ -461,16 +461,16 @@ export default function DepositScreen() {
             <View style={styles.amountValueBox}>
               <Text style={styles.amountValue}>₹{Number(amount || 0).toLocaleString()}</Text>
               <View style={styles.amountEditPill}>
-                <Edit2 size={12} color="#7C3AED" />
+                <Edit2 size={12} color="#F59E0B" />
               </View>
             </View>
           </TouchableOpacity>
 
-          {/* SECTION: PAY WITH UPI APPS (PG STYLE - MATCHES IMAGE 2) */}
+          {/* SECTION: PAY WITH UPI APPS (PG STYLE) */}
           <View style={styles.pgSectionCard}>
             <View style={styles.pgSectionHeader}>
               <View style={styles.pgHeaderIconBadge}>
-                <Smartphone size={18} color="#7C3AED" strokeWidth={2.4} />
+                <Smartphone size={18} color="#F59E0B" strokeWidth={2.4} />
               </View>
               <View style={{ flex: 1, marginLeft: 10 }}>
                 <Text style={styles.pgSectionTitle}>Pay with UPI Apps</Text>
@@ -481,7 +481,7 @@ export default function DepositScreen() {
                 </Text>
               </View>
 
-              {/* Overlapping circular brand logos preview (matching Image 2) */}
+              {/* Overlapping circular brand logos preview */}
               <View style={styles.pgOverlapLogosRow}>
                 <View style={[styles.pgMiniLogo, { zIndex: 4, marginLeft: 0 }]}>
                   <GooglePayIcon size={26} />
@@ -500,7 +500,7 @@ export default function DepositScreen() {
 
             {isDetectingApps ? (
               <View style={styles.pgLoadingRow}>
-                <ActivityIndicator size="small" color="#7C3AED" />
+                <ActivityIndicator size="small" color="#F59E0B" />
                 <Text style={styles.pgLoadingText}>Checking available UPI apps on your phone...</Text>
               </View>
             ) : installedApps.length > 0 ? (
@@ -564,16 +564,16 @@ export default function DepositScreen() {
                   disabled={Boolean(launchingAppId)}
                 >
                   <LinearGradient
-                    colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.pgChooserGradient}
                   >
                     {launchingAppId ? (
-                      <ActivityIndicator size="small" color="#FFFFFF" />
+                      <ActivityIndicator size="small" color="#0A0B10" />
                     ) : (
                       <>
-                        <ExternalLink size={16} color="#FFFFFF" strokeWidth={2.4} />
+                        <ExternalLink size={16} color="#0A0B10" strokeWidth={2.4} />
                         <Text style={styles.pgChooserBtnText}>
                           Pay ₹{Number(amount || 0).toLocaleString()} via UPI App
                         </Text>
@@ -586,7 +586,7 @@ export default function DepositScreen() {
 
             {/* Note banner */}
             <View style={styles.pgTipBanner}>
-              <Sparkles size={13} color="#7C3AED" strokeWidth={2.2} />
+              <Sparkles size={13} color="#F59E0B" strokeWidth={2.2} />
               <Text style={styles.pgTipText}>
                 After payment in your UPI app, enter the 12-digit UTR and upload your screenshot below.
               </Text>
@@ -596,7 +596,7 @@ export default function DepositScreen() {
           {/* SECTION 2: PAYMENT VERIFICATION */}
           <View style={[styles.sectionHeader, { marginTop: 32 }]}>
             <View style={styles.sectionIconBadge}>
-              <ShieldCheck size={18} color="#7C3AED" strokeWidth={2.4} />
+              <ShieldCheck size={18} color="#F59E0B" strokeWidth={2.4} />
             </View>
             <Text style={styles.sectionTitle}>Payment Verification</Text>
           </View>
@@ -616,7 +616,7 @@ export default function DepositScreen() {
                   if (submitError) setSubmitError(null);
                 }}
                 placeholder="e.g. 3452XXXXXX21"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
                 autoCapitalize="characters"
               />
               {utr.length > 0 && (
@@ -656,7 +656,7 @@ export default function DepositScreen() {
                 activeOpacity={0.8}
               >
                 <View style={styles.uploadIconBox}>
-                  <Upload size={18} color="#7C3AED" strokeWidth={2.4} />
+                  <Upload size={18} color="#F59E0B" strokeWidth={2.4} />
                 </View>
                 <Text style={styles.uploadPromptText}>Tap to upload screenshot</Text>
                 <ChevronRight size={19} color="#94A3B8" strokeWidth={2.2} />
@@ -680,17 +680,17 @@ export default function DepositScreen() {
           <View style={styles.historyHeaderRow}>
             <Text style={styles.historySectionTitle}>Your Deposit History</Text>
             <TouchableOpacity onPress={loadHistory} activeOpacity={0.7} style={styles.refreshBtn}>
-              <RefreshCw size={15} color="#7C3AED" />
+              <RefreshCw size={15} color="#F59E0B" />
               <Text style={styles.refreshBtnText}>Refresh</Text>
             </TouchableOpacity>
           </View>
 
           {isLoadingHistory ? (
-            <ActivityIndicator color="#7C3AED" style={{ marginVertical: 36 }} />
+            <ActivityIndicator color="#F59E0B" style={{ marginVertical: 36 }} />
           ) : depositHistory.length === 0 ? (
             <View style={styles.emptyContainer}>
               <View style={styles.emptyIconCircle}>
-                <Clock size={36} color="#94A3B8" />
+                <Clock size={36} color="#64748B" />
               </View>
               <Text style={styles.emptyTitle}>No Deposits Yet</Text>
               <Text style={styles.emptySubtitle}>
@@ -760,13 +760,13 @@ export default function DepositScreen() {
             activeOpacity={0.88}
           >
             <LinearGradient
-              colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+              colors={['#FDE047', '#F59E0B', '#D97706']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               style={styles.confirmGradient}
             >
               {isSubmitting ? (
-                <ActivityIndicator color="#FFFFFF" size="small" />
+                <ActivityIndicator color="#0A0B10" size="small" />
               ) : (
                 <Text style={styles.confirmBtnText}>Confirm Payment</Text>
               )}
@@ -798,7 +798,7 @@ export default function DepositScreen() {
               activeOpacity={0.7}
             >
               <View style={styles.sheetOptionIconBox}>
-                <ImageIcon size={20} color="#7C3AED" />
+                <ImageIcon size={20} color="#F59E0B" />
               </View>
               <View style={{ flex: 1, marginLeft: 12 }}>
                 <Text style={styles.sheetOptionTitle}>Choose from Gallery</Text>
@@ -813,7 +813,7 @@ export default function DepositScreen() {
               activeOpacity={0.7}
             >
               <View style={styles.sheetOptionIconBox}>
-                <Camera size={20} color="#7C3AED" />
+                <Camera size={20} color="#F59E0B" />
               </View>
               <View style={{ flex: 1, marginLeft: 12 }}>
                 <Text style={styles.sheetOptionTitle}>Take Photo</Text>
@@ -864,7 +864,7 @@ export default function DepositScreen() {
                 value={tempAmount}
                 onChangeText={(val) => setTempAmount(val.replace(/[^0-9]/g, ''))}
                 placeholder="1000"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
                 keyboardType="number-pad"
                 autoFocus
               />
@@ -884,7 +884,7 @@ export default function DepositScreen() {
                         onPress={() => handleSelectPlan(p)}
                         activeOpacity={0.75}
                       >
-                        <Sparkles size={12} color={isSelected ? '#7C3AED' : '#64748B'} />
+                        <Sparkles size={12} color={isSelected ? '#F59E0B' : '#64748B'} />
                         <Text style={[styles.planChipText, isSelected && styles.planChipTextActive]}>
                           ₹{p.amount} • {p.name}
                         </Text>
@@ -901,7 +901,7 @@ export default function DepositScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.saveAmountGradient}
@@ -922,7 +922,7 @@ export default function DepositScreen() {
             </View>
             <Text style={styles.modalTitle}>Payment Submitted!</Text>
             <Text style={styles.modalDesc}>
-              Your deposit request with UTR <Text style={{ fontWeight: '700', color: '#0F172A' }}>{utr}</Text> has
+              Your deposit request with UTR <Text style={{ fontWeight: '700', color: '#FBBF24' }}>{utr}</Text> has
               been submitted. It will be verified and credited to your wallet balance shortly.
             </Text>
             <TouchableOpacity
@@ -930,7 +930,14 @@ export default function DepositScreen() {
               activeOpacity={0.85}
               onPress={handleSuccessClose}
             >
-              <Text style={styles.modalButtonText}>View in Deposit History</Text>
+              <LinearGradient
+                colors={['#FDE047', '#F59E0B', '#D97706']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.modalButtonGradient}
+              >
+                <Text style={styles.modalButtonText}>View in Deposit History</Text>
+              </LinearGradient>
             </TouchableOpacity>
           </View>
         </View>
@@ -942,7 +949,7 @@ export default function DepositScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
 
   // Header
@@ -956,27 +963,27 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 18.5,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.3,
   },
   circleButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 2,
   },
   circleButtonActive: {
-    backgroundColor: '#7C3AED',
-    borderColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
+    borderColor: '#F59E0B',
   },
 
   // Main Scroll
@@ -996,14 +1003,14 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 8,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   sectionTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.2,
   },
 
@@ -1012,17 +1019,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 270,
     height: 270,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 28,
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
-    shadowColor: '#7C3AED',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.08,
-    shadowRadius: 22,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.14,
+    shadowRadius: 20,
     elevation: 4,
     position: 'relative',
   },
@@ -1042,7 +1049,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 3.5,
     borderLeftWidth: 3.5,
     borderTopLeftRadius: 18,
-    borderColor: '#7C3AED',
+    borderColor: '#F59E0B',
     zIndex: 10,
   },
   cornerBracketBR: {
@@ -1054,7 +1061,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3.5,
     borderRightWidth: 3.5,
     borderBottomRightRadius: 18,
-    borderColor: '#7C3AED',
+    borderColor: '#F59E0B',
     zIndex: 10,
   },
   qrInnerContainer: {
@@ -1065,6 +1072,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    backgroundColor: '#FFFFFF',
   },
   qrImage: {
     width: '100%',
@@ -1075,12 +1083,14 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1E2235',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.16,
+    shadowOpacity: 0.3,
     shadowRadius: 12,
     elevation: 8,
     zIndex: 20,
@@ -1091,16 +1101,16 @@ const styles = StyleSheet.create({
     right: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#1A1C2A',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 12,
     borderWidth: 1.2,
-    borderColor: '#EDE9FE',
+    borderColor: 'rgba(245, 158, 11, 0.35)',
     gap: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
     zIndex: 20,
@@ -1108,7 +1118,7 @@ const styles = StyleSheet.create({
   hideQrPillText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   qrLoaderBox: {
     alignItems: 'center',
@@ -1117,7 +1127,7 @@ const styles = StyleSheet.create({
   },
   qrLoaderText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 10,
     fontWeight: '500',
   },
@@ -1129,9 +1139,9 @@ const styles = StyleSheet.create({
   viewQrCtaBtn: {
     borderRadius: 22,
     overflow: 'hidden',
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.28,
+    shadowOpacity: 0.25,
     shadowRadius: 10,
     elevation: 4,
   },
@@ -1146,7 +1156,7 @@ const styles = StyleSheet.create({
   viewQrCtaText: {
     fontSize: 14.5,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0A0B10',
     letterSpacing: -0.2,
   },
 
@@ -1154,7 +1164,7 @@ const styles = StyleSheet.create({
   scanSubtitle: {
     fontSize: 13.5,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     marginTop: 14,
     marginBottom: 4,
@@ -1169,19 +1179,19 @@ const styles = StyleSheet.create({
   upiLabel: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
   },
   upiValue: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   copyBtn: {
     padding: 4,
     marginLeft: 2,
   },
   copiedTag: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.2)',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
@@ -1190,7 +1200,7 @@ const styles = StyleSheet.create({
   copiedTagText: {
     fontSize: 10.5,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#10B981',
   },
 
   // Amount Row
@@ -1204,7 +1214,7 @@ const styles = StyleSheet.create({
   amountLabel: {
     fontSize: 15,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
   },
   amountValueBox: {
     flexDirection: 'row',
@@ -1214,29 +1224,29 @@ const styles = StyleSheet.create({
   amountValue: {
     fontSize: 27,
     fontWeight: '900',
-    color: '#0F172A',
+    color: '#FBBF24',
     letterSpacing: -0.5,
   },
   amountEditPill: {
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     padding: 5,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#EDE9FE',
+    borderColor: 'rgba(245, 158, 11, 0.3)',
   },
 
-  // PG-Style Pay with UPI Apps Section (Matches Image 2)
+  // PG-Style Pay with UPI Apps Section
   pgSectionCard: {
     marginTop: 24,
     marginBottom: 8,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 22,
     padding: 18,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
-    shadowColor: '#7C3AED',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.2,
     shadowRadius: 12,
     elevation: 3,
   },
@@ -1249,19 +1259,19 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 12,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pgSectionTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.2,
   },
   pgSectionSubtitle: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
     marginTop: 1,
   },
@@ -1273,10 +1283,10 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: 'hidden',
     borderWidth: 1.5,
-    borderColor: '#FFFFFF',
+    borderColor: '#13151F',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
   },
   pgLoadingRow: {
@@ -1288,7 +1298,7 @@ const styles = StyleSheet.create({
   },
   pgLoadingText: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   pgAppsList: {
@@ -1298,11 +1308,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
     borderRadius: 16,
     padding: 12,
-    borderWidth: 1.2,
-    borderColor: '#E2E8F0',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   pgAppOptionLeft: {
     flexDirection: 'row',
@@ -1328,12 +1338,12 @@ const styles = StyleSheet.create({
   pgAppName: {
     fontSize: 15.5,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   pgInstalledTag: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.18)',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 5,
@@ -1342,12 +1352,12 @@ const styles = StyleSheet.create({
   pgInstalledTagText: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#15803D',
+    color: '#10B981',
     letterSpacing: 0.2,
   },
   pgAppDesc: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
     marginTop: 2,
   },
@@ -1360,7 +1370,7 @@ const styles = StyleSheet.create({
     gap: 3,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 2,
   },
@@ -1371,11 +1381,11 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   pgFallbackBox: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
     borderRadius: 14,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   pgFallbackTop: {
     marginBottom: 10,
@@ -1383,11 +1393,11 @@ const styles = StyleSheet.create({
   pgFallbackTitle: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   pgFallbackSub: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   pgOpenChooserBtn: {
@@ -1405,23 +1415,23 @@ const styles = StyleSheet.create({
   pgChooserBtnText: {
     fontSize: 13.5,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0A0B10',
   },
   pgTipBanner: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: '#FAF5FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
     borderRadius: 10,
     padding: 9,
     marginTop: 14,
     gap: 7,
     borderWidth: 1,
-    borderColor: '#F3E8FF',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
   },
   pgTipText: {
     flex: 1,
     fontSize: 11,
-    color: '#6B21A8',
+    color: '#FCD34D',
     fontWeight: '500',
     lineHeight: 15,
   },
@@ -1429,7 +1439,7 @@ const styles = StyleSheet.create({
   // Verification Section Subtitle
   verificationSubtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     marginBottom: 16,
   },
@@ -1441,28 +1451,24 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#334155',
+    color: '#CBD5E1',
     marginBottom: 7,
   },
   inputBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 14,
     paddingHorizontal: 14,
     height: 52,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.02,
-    shadowRadius: 3,
   },
   textInput: {
     flex: 1,
     fontSize: 15,
     fontWeight: '600',
-    color: '#0F172A',
+    color: '#F8FAFC',
     height: '100%',
   },
   clearBtn: {
@@ -1473,22 +1479,18 @@ const styles = StyleSheet.create({
   uploadPlaceholderCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 14,
     paddingHorizontal: 14,
     height: 58,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.02,
-    shadowRadius: 3,
   },
   uploadIconBox: {
     width: 38,
     height: 38,
     borderRadius: 10,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1496,7 +1498,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 14.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#CBD5E1',
     marginLeft: 12,
   },
 
@@ -1504,9 +1506,9 @@ const styles = StyleSheet.create({
   screenshotPreviewCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#DDD6FE',
+    backgroundColor: '#1E2235',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
     borderRadius: 14,
     padding: 10,
   },
@@ -1514,7 +1516,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 8,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: '#0A0B10',
   },
   screenshotInfo: {
     flex: 1,
@@ -1528,7 +1530,7 @@ const styles = StyleSheet.create({
   screenshotStatusText: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   screenshotSubText: {
     fontSize: 11.5,
@@ -1542,7 +1544,9 @@ const styles = StyleSheet.create({
 
   // Error Banner
   errorBanner: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     borderRadius: 12,
     padding: 12,
     marginTop: 8,
@@ -1550,7 +1554,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#DC2626',
+    color: '#F87171',
     textAlign: 'center',
   },
 
@@ -1560,16 +1564,16 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
     paddingHorizontal: 20,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#F1F5F9',
+    borderTopColor: 'rgba(255, 255, 255, 0.08)',
   },
   confirmBtnWrapper: {
     borderRadius: 27,
     overflow: 'hidden',
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.32,
     shadowRadius: 14,
@@ -1584,41 +1588,43 @@ const styles = StyleSheet.create({
   confirmBtnText: {
     fontSize: 16.5,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0A0B10',
     letterSpacing: -0.2,
   },
 
   // Modals & Sheets
   sheetBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.45)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'flex-end',
   },
   sheetCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderTopLeftRadius: 26,
     borderTopRightRadius: 26,
     paddingHorizontal: 20,
     paddingTop: 12,
     paddingBottom: 36,
+    borderTopWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
   },
   sheetHandle: {
     width: 36,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#CBD5E1',
+    backgroundColor: '#334155',
     alignSelf: 'center',
     marginBottom: 16,
   },
   sheetTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 4,
   },
   sheetSubtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 18,
   },
   sheetOption: {
@@ -1626,24 +1632,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 14,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(255, 255, 255, 0.06)',
   },
   sheetOptionIconBox: {
     width: 42,
     height: 42,
     borderRadius: 12,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   sheetOptionTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   sheetOptionDesc: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   sheetCancelBtn: {
@@ -1654,23 +1660,25 @@ const styles = StyleSheet.create({
   sheetCancelText: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#64748B',
+    color: '#94A3B8',
   },
 
   // Amount Modal
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.45)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
   amountModalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 24,
     padding: 22,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.4,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -1683,19 +1691,19 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   modalSubtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 16,
   },
   modalAmountInputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     borderWidth: 1.5,
-    borderColor: '#7C3AED',
+    borderColor: '#F59E0B',
     borderRadius: 14,
     paddingHorizontal: 14,
     height: 56,
@@ -1703,19 +1711,19 @@ const styles = StyleSheet.create({
   modalCurrencySymbol: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#F59E0B',
     marginRight: 6,
   },
   modalAmountInput: {
     flex: 1,
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   quickSelectLabel: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 8,
     textTransform: 'uppercase',
   },
@@ -1727,25 +1735,25 @@ const styles = StyleSheet.create({
   planChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(255, 255, 255, 0.09)',
     paddingHorizontal: 10,
     paddingVertical: 7,
     borderRadius: 10,
     gap: 5,
   },
   planChipActive: {
-    backgroundColor: '#F5F3FF',
-    borderColor: '#7C3AED',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: '#F59E0B',
   },
   planChipText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#475569',
+    color: '#CBD5E1',
   },
   planChipTextActive: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   saveAmountBtn: {
@@ -1761,45 +1769,51 @@ const styles = StyleSheet.create({
   saveAmountText: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: '#0A0B10',
   },
 
   // Success Modal Card
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 24,
     padding: 24,
     alignItems: 'center',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
   },
   successIconCircle: {
     width: 68,
     height: 68,
     borderRadius: 34,
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.18)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
   },
   modalDesc: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#CBD5E1',
     textAlign: 'center',
     lineHeight: 20,
     marginVertical: 12,
   },
   modalButton: {
-    backgroundColor: '#7C3AED',
     borderRadius: 14,
+    overflow: 'hidden',
+    width: '100%',
+    marginTop: 10,
+  },
+  modalButtonGradient: {
     paddingVertical: 14,
     paddingHorizontal: 24,
-    width: '100%',
     alignItems: 'center',
-    marginTop: 10,
+    justifyContent: 'center',
+    borderRadius: 14,
   },
   modalButtonText: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: '#0A0B10',
   },
 
   // History Tab Styles
@@ -1816,7 +1830,7 @@ const styles = StyleSheet.create({
   historySectionTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   refreshBtn: {
     flexDirection: 'row',
@@ -1825,12 +1839,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 8,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
   },
   refreshBtnText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   emptyContainer: {
     alignItems: 'center',
@@ -1841,7 +1855,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
@@ -1849,25 +1863,25 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   emptySubtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 18,
   },
   historyCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
+    shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 2,
   },
@@ -1879,11 +1893,11 @@ const styles = StyleSheet.create({
   historyAmount: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   historyRef: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
     fontWeight: '500',
   },
@@ -1899,7 +1913,7 @@ const styles = StyleSheet.create({
   },
   historyCardDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.07)',
     marginVertical: 12,
   },
   historyCardBottom: {
@@ -1909,11 +1923,11 @@ const styles = StyleSheet.create({
   },
   historyDate: {
     fontSize: 11.5,
-    color: '#94A3B8',
+    color: '#64748B',
     fontWeight: '500',
   },
   historyPlanPill: {
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 6,
@@ -1921,6 +1935,6 @@ const styles = StyleSheet.create({
   historyPlanText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
 });

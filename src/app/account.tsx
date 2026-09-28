@@ -186,7 +186,7 @@ export default function AccountScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header with Back option */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -195,7 +195,7 @@ export default function AccountScreen() {
           onPress={() => (router.canGoBack() ? router.back() : router.replace('/(tabs)/profile'))}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Account</Text>
@@ -207,7 +207,7 @@ export default function AccountScreen() {
               onPress={handleOpenAddModal}
               activeOpacity={0.7}
             >
-              <Plus size={16} color="#7C3AED" strokeWidth={2.5} />
+              <Plus size={16} color="#F59E0B" strokeWidth={2.5} />
               <Text style={styles.headerAddBtnText}>Add</Text>
             </TouchableOpacity>
           )}
@@ -219,12 +219,12 @@ export default function AccountScreen() {
         showsVerticalScrollIndicator={false}
       >
         {isLoading ? (
-          <ActivityIndicator color="#7C3AED" style={{ marginVertical: 40 }} />
+          <ActivityIndicator color="#F59E0B" style={{ marginVertical: 40 }} />
         ) : accounts.length === 0 ? (
           /* Empty Screen: No accounts added yet */
           <View style={styles.emptyContainer}>
             <View style={styles.emptyIconCircle}>
-              <Smartphone size={36} color="#7C3AED" />
+              <Smartphone size={36} color="#F59E0B" />
             </View>
 
             <Text style={styles.emptyTitle}>No Accounts Added Yet</Text>
@@ -239,12 +239,12 @@ export default function AccountScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.emptyCtaGradient}
               >
-                <Plus size={18} color="#FFFFFF" strokeWidth={2.5} style={{ marginRight: 6 }} />
+                <Plus size={18} color="#0A0B10" strokeWidth={2.5} style={{ marginRight: 6 }} />
                 <Text style={styles.emptyCtaText}>Add Account</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -270,7 +270,7 @@ export default function AccountScreen() {
                   {/* Top Row: Icon, Name & Status */}
                   <View style={styles.cardTopRow}>
                     <View style={styles.cardIconBox}>
-                      <Smartphone size={22} color="#7C3AED" />
+                      <Smartphone size={22} color="#F59E0B" />
                     </View>
 
                     <View style={styles.cardInfoGroup}>
@@ -333,7 +333,7 @@ export default function AccountScreen() {
               onPress={handleOpenAddModal}
               activeOpacity={0.8}
             >
-              <Plus size={18} color="#7C3AED" strokeWidth={2.5} />
+              <Plus size={18} color="#F59E0B" strokeWidth={2.5} />
               <Text style={styles.addAnotherBtnText}>Add Another UPI ID</Text>
             </TouchableOpacity>
           </View>
@@ -349,12 +349,12 @@ export default function AccountScreen() {
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <View style={styles.modalHeaderIcon}>
-                  <Smartphone size={20} color="#7C3AED" />
+                  <Smartphone size={20} color="#F59E0B" />
                 </View>
                 <Text style={styles.modalTitle}>Add UPI Account</Text>
               </View>
               <TouchableOpacity onPress={() => setShowAddModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -370,7 +370,7 @@ export default function AccountScreen() {
                 value={nameInput}
                 onChangeText={setNameInput}
                 placeholder="Enter full name (as per bank)"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
               />
             </View>
 
@@ -382,7 +382,7 @@ export default function AccountScreen() {
                 value={upiInput}
                 onChangeText={setUpiInput}
                 placeholder="e.g. rahul@okhdfcbank or 9876543210@upi"
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor="#64748B"
                 autoCapitalize="none"
                 autoCorrect={false}
               />
@@ -419,13 +419,13 @@ export default function AccountScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.saveBtnGradient}
               >
                 {isSaving ? (
-                  <ActivityIndicator color="#FFFFFF" size="small" />
+                  <ActivityIndicator color="#0A0B10" size="small" />
                 ) : (
                   <Text style={styles.saveBtnText}>Save Account</Text>
                 )}
@@ -441,7 +441,7 @@ export default function AccountScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -449,9 +449,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingBottom: 14,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0A0B10',
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(255, 255, 255, 0.06)',
   },
   backButton: {
     width: 38,
@@ -459,12 +459,14 @@ const styles = StyleSheet.create({
     borderRadius: 19,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   headerRight: {
     width: 60,
@@ -474,7 +476,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 14,
@@ -482,7 +484,7 @@ const styles = StyleSheet.create({
   headerAddBtnText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   scrollContent: {
     paddingHorizontal: 16,
@@ -501,26 +503,28 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
-    shadowColor: '#7C3AED',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.18,
     shadowRadius: 12,
     elevation: 4,
   },
   emptyTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 8,
     textAlign: 'center',
   },
   emptySubtitle: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 20,
     marginBottom: 28,
@@ -529,7 +533,7 @@ const styles = StyleSheet.create({
   emptyCtaButton: {
     borderRadius: 16,
     overflow: 'hidden',
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.28,
     shadowRadius: 14,
@@ -549,15 +553,15 @@ const styles = StyleSheet.create({
   emptyCtaText: {
     fontSize: 15.5,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: '#0A0B10',
   },
   trustBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    backgroundColor: '#F0FDF4',
+    backgroundColor: 'rgba(16, 185, 129, 0.12)',
     borderWidth: 1,
-    borderColor: '#DCFCE7',
+    borderColor: 'rgba(16, 185, 129, 0.25)',
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 20,
@@ -565,7 +569,7 @@ const styles = StyleSheet.create({
   trustBadgeText: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#166534',
+    color: '#10B981',
   },
 
   // Accounts List
@@ -575,20 +579,20 @@ const styles = StyleSheet.create({
   sectionSubtitle: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#64748B',
+    color: '#94A3B8',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
     marginBottom: 4,
   },
   accountCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 18,
     padding: 16,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -600,7 +604,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -611,7 +615,7 @@ const styles = StyleSheet.create({
   accountHolderName: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 3,
   },
   upiCopyRow: {
@@ -621,10 +625,10 @@ const styles = StyleSheet.create({
   accountUpiText: {
     fontSize: 13.5,
     fontWeight: '600',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   defaultBadge: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.18)',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
@@ -632,11 +636,11 @@ const styles = StyleSheet.create({
   defaultBadgeText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#10B981',
   },
   cardDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.07)',
     marginVertical: 12,
   },
   cardBottomRow: {
@@ -650,7 +654,7 @@ const styles = StyleSheet.create({
   setDefaultText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   defaultLabel: {
     fontSize: 12,
@@ -660,15 +664,15 @@ const styles = StyleSheet.create({
   deleteBtn: {
     padding: 6,
     borderRadius: 8,
-    backgroundColor: '#FEF2F2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
   },
   addAnotherBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#EDE9FE',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     borderStyle: 'dashed',
     borderRadius: 16,
     paddingVertical: 14,
@@ -678,26 +682,28 @@ const styles = StyleSheet.create({
   addAnotherBtnText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
 
   // Modal
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 20,
     padding: 20,
     width: '100%',
     maxWidth: 380,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.3,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -711,18 +717,18 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   modalTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   modalDesc: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     marginBottom: 16,
   },
@@ -732,18 +738,18 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#334155',
+    color: '#CBD5E1',
     marginBottom: 6,
   },
   textInput: {
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 11,
     fontSize: 14,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
   },
   suffixContainer: {
@@ -759,20 +765,22 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   suffixPill: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
   },
   suffixText: {
     fontSize: 11.5,
     fontWeight: '600',
-    color: '#475569',
+    color: '#FBBF24',
   },
   errorBox: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     padding: 10,
     borderRadius: 8,
     marginBottom: 14,
@@ -780,7 +788,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#DC2626',
+    color: '#F87171',
     textAlign: 'center',
   },
   saveBtnWrap: {
@@ -795,6 +803,6 @@ const styles = StyleSheet.create({
   saveBtnText: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: '#0A0B10',
   },
 });

@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
   Animated,
   ScrollView,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -231,7 +232,7 @@ export default function LoginScreen() {
       });
 
       setIsLoading(false);
-      setSuccessMessage(`Welcome to PayU, ${fullName.trim()}!`);
+      setSuccessMessage(`Welcome to DreamPay, ${fullName.trim()}!`);
       setIsSuccess(true);
       setTimeout(() => {
         router.replace('/(tabs)');
@@ -282,7 +283,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
@@ -295,16 +296,15 @@ export default function LoginScreen() {
         >
           {/* Brand Header */}
           <View style={styles.brandHeader}>
-            <LinearGradient
-              colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.logoBadge}
-            >
-              <Sparkles size={24} color="#FFFFFF" />
-            </LinearGradient>
-            <Text style={styles.brandName}>PayU</Text>
-            <Text style={styles.brandSubtitle}>Fast • Secure • Daily Rewards</Text>
+            <View style={styles.logoBadge}>
+              <Image
+                source={require('../../assets/images/dreampay-logo.png')}
+                style={styles.brandLogoImg}
+                resizeMode="cover"
+              />
+            </View>
+            <Text style={styles.brandName}>DreamPay</Text>
+            <Text style={styles.brandSubtitle}>Next-Gen Smart Wealth & Payments</Text>
           </View>
 
           {/* Stepper Indicator */}
@@ -317,7 +317,7 @@ export default function LoginScreen() {
                 ]}
               >
                 {step !== 'email' ? (
-                  <CheckCircle2 size={13} color="#10B981" />
+                  <CheckCircle2 size={13} color="#FBBF24" />
                 ) : (
                   <View style={styles.stepNumDot} />
                 )}
@@ -342,7 +342,7 @@ export default function LoginScreen() {
                 <View
                   style={[
                     styles.stepNumDot,
-                    step === 'email' && { backgroundColor: '#CBD5E1' },
+                    step === 'email' && { backgroundColor: '#475569' },
                   ]}
                 />
                 <Text
@@ -371,11 +371,11 @@ export default function LoginScreen() {
             {isSuccess ? (
               <View style={styles.successWrapper}>
                 <View style={styles.successIconCircle}>
-                  <CheckCircle2 size={52} color="#10B981" />
+                  <CheckCircle2 size={52} color="#F59E0B" />
                 </View>
                 <Text style={styles.successTitle}>{successMessage}</Text>
                 <Text style={styles.successSub}>Redirecting to your dashboard...</Text>
-                <ActivityIndicator color="#7C3AED" style={{ marginTop: 20 }} />
+                <ActivityIndicator color="#F59E0B" style={{ marginTop: 20 }} />
               </View>
             ) : step === 'email' ? (
               /* ================= STEP 1: ENTER EMAIL ================= */
@@ -388,7 +388,7 @@ export default function LoginScreen() {
                 {/* Email Input Field */}
                 <View style={styles.inputContainer}>
                   <View style={styles.inputIconBox}>
-                    <Mail size={19} color="#7C3AED" />
+                    <Mail size={19} color="#F59E0B" />
                   </View>
                   <TextInput
                     style={styles.textInput}
@@ -398,7 +398,7 @@ export default function LoginScreen() {
                       if (errorMessage) setErrorMessage(null);
                     }}
                     placeholder="name@example.com"
-                    placeholderTextColor="#94A3B8"
+                    placeholderTextColor="#64748B"
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -429,17 +429,17 @@ export default function LoginScreen() {
                   activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.primaryBtnGradient}
                   >
                     {isLoading ? (
-                      <ActivityIndicator color="#FFFFFF" size="small" />
+                      <ActivityIndicator color="#0A0B10" size="small" />
                     ) : (
                       <>
                         <Text style={styles.primaryBtnText}>Continue with Email</Text>
-                        <ArrowRight size={18} color="#FFFFFF" strokeWidth={2.5} style={{ marginLeft: 8 }} />
+                        <ArrowRight size={18} color="#0A0B10" strokeWidth={2.5} style={{ marginLeft: 8 }} />
                       </>
                     )}
                   </LinearGradient>
@@ -451,7 +451,7 @@ export default function LoginScreen() {
                   onPress={() => animateToStep('password_login')}
                   activeOpacity={0.7}
                 >
-                  <KeyRound size={15} color="#7C3AED" style={{ marginRight: 6 }} />
+                  <KeyRound size={15} color="#F59E0B" style={{ marginRight: 6 }} />
                   <Text style={styles.secondaryToggleText}>Sign in with Password instead</Text>
                 </TouchableOpacity>
               </View>
@@ -473,7 +473,7 @@ export default function LoginScreen() {
                     onPress={() => animateToStep('email')}
                     activeOpacity={0.7}
                   >
-                    <Edit3 size={13} color="#7C3AED" style={{ marginRight: 3 }} />
+                    <Edit3 size={13} color="#F59E0B" style={{ marginRight: 3 }} />
                     <Text style={styles.changeEmailText}>Change</Text>
                   </TouchableOpacity>
                 </View>
@@ -533,7 +533,7 @@ export default function LoginScreen() {
 
                   {resendSeconds > 0 ? (
                     <Text style={styles.resendTimerText}>
-                      Resend in <Text style={{ color: '#7C3AED', fontWeight: '700' }}>{resendSeconds}s</Text>
+                      Resend in <Text style={{ color: '#FBBF24', fontWeight: '700' }}>{resendSeconds}s</Text>
                     </Text>
                   ) : (
                     <TouchableOpacity onPress={handleSendOtp} activeOpacity={0.7}>
@@ -557,17 +557,17 @@ export default function LoginScreen() {
                   activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.primaryBtnGradient}
                   >
                     {isLoading ? (
-                      <ActivityIndicator color="#FFFFFF" size="small" />
+                      <ActivityIndicator color="#0A0B10" size="small" />
                     ) : (
                       <>
                         <Text style={styles.primaryBtnText}>Verify & Continue</Text>
-                        <ArrowRight size={18} color="#FFFFFF" strokeWidth={2.5} style={{ marginLeft: 8 }} />
+                        <ArrowRight size={18} color="#0A0B10" strokeWidth={2.5} style={{ marginLeft: 8 }} />
                       </>
                     )}
                   </LinearGradient>
@@ -577,7 +577,7 @@ export default function LoginScreen() {
               /* ================= STEP 3: COMPLETE REGISTRATION (NEW USER) ================= */
               <View>
                 <View style={styles.newMemberBadge}>
-                  <Sparkles size={14} color="#7C3AED" />
+                  <Sparkles size={14} color="#F59E0B" />
                   <Text style={styles.newMemberBadgeText}>New Member Account Setup</Text>
                 </View>
 
@@ -588,7 +588,7 @@ export default function LoginScreen() {
 
                 {/* Email Banner with Change button */}
                 <View style={styles.verifiedEmailBox}>
-                  <Mail size={18} color="#7C3AED" />
+                  <Mail size={18} color="#F59E0B" />
                   <View style={{ flex: 1, marginLeft: 10 }}>
                     <Text style={styles.verifiedEmailLabel}>Account Email</Text>
                     <Text style={styles.verifiedEmailVal}>{email}</Text>
@@ -598,7 +598,7 @@ export default function LoginScreen() {
                     onPress={() => animateToStep('email')}
                     activeOpacity={0.7}
                   >
-                    <Edit3 size={13} color="#7C3AED" style={{ marginRight: 3 }} />
+                    <Edit3 size={13} color="#F59E0B" style={{ marginRight: 3 }} />
                     <Text style={styles.changeEmailText}>Change</Text>
                   </TouchableOpacity>
                 </View>
@@ -608,7 +608,7 @@ export default function LoginScreen() {
                   <Text style={styles.fieldLabel}>Full Legal Name</Text>
                   <View style={styles.inputContainer}>
                     <View style={styles.inputIconBox}>
-                      <User size={18} color="#7C3AED" />
+                      <User size={18} color="#F59E0B" />
                     </View>
                     <TextInput
                       style={styles.textInput}
@@ -618,7 +618,7 @@ export default function LoginScreen() {
                         if (errorMessage) setErrorMessage(null);
                       }}
                       placeholder="e.g. Rahul Sharma"
-                      placeholderTextColor="#94A3B8"
+                      placeholderTextColor="#64748B"
                       autoCapitalize="words"
                     />
                   </View>
@@ -629,7 +629,7 @@ export default function LoginScreen() {
                   <Text style={styles.fieldLabel}>Mobile Number</Text>
                   <View style={styles.inputContainer}>
                     <View style={styles.inputIconBox}>
-                      <Phone size={18} color="#7C3AED" />
+                      <Phone size={18} color="#F59E0B" />
                     </View>
                     <TextInput
                       style={styles.textInput}
@@ -639,7 +639,7 @@ export default function LoginScreen() {
                         if (errorMessage) setErrorMessage(null);
                       }}
                       placeholder="e.g. 9876543210"
-                      placeholderTextColor="#94A3B8"
+                      placeholderTextColor="#64748B"
                       keyboardType="phone-pad"
                     />
                   </View>
@@ -650,7 +650,7 @@ export default function LoginScreen() {
                   <Text style={styles.fieldLabel}>Create Password</Text>
                   <View style={styles.inputContainer}>
                     <View style={styles.inputIconBox}>
-                      <Lock size={18} color="#7C3AED" />
+                      <Lock size={18} color="#F59E0B" />
                     </View>
                     <TextInput
                       style={styles.textInput}
@@ -660,7 +660,7 @@ export default function LoginScreen() {
                         if (errorMessage) setErrorMessage(null);
                       }}
                       placeholder="At least 6 characters"
-                      placeholderTextColor="#94A3B8"
+                      placeholderTextColor="#64748B"
                       secureTextEntry={!showPassword}
                     />
                     <TouchableOpacity
@@ -691,17 +691,17 @@ export default function LoginScreen() {
                   activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.primaryBtnGradient}
                   >
                     {isLoading ? (
-                      <ActivityIndicator color="#FFFFFF" size="small" />
+                      <ActivityIndicator color="#0A0B10" size="small" />
                     ) : (
                       <>
                         <Text style={styles.primaryBtnText}>Create Account & Sign In</Text>
-                        <ArrowRight size={18} color="#FFFFFF" strokeWidth={2.5} style={{ marginLeft: 8 }} />
+                        <ArrowRight size={18} color="#0A0B10" strokeWidth={2.5} style={{ marginLeft: 8 }} />
                       </>
                     )}
                   </LinearGradient>
@@ -713,7 +713,7 @@ export default function LoginScreen() {
                   onPress={() => animateToStep('email')}
                   activeOpacity={0.7}
                 >
-                  <RotateCcw size={15} color="#7C3AED" style={{ marginRight: 6 }} />
+                  <RotateCcw size={15} color="#F59E0B" style={{ marginRight: 6 }} />
                   <Text style={styles.secondaryToggleText}>Already have an account? Sign In</Text>
                 </TouchableOpacity>
               </View>
@@ -728,14 +728,14 @@ export default function LoginScreen() {
                 {/* Email Field */}
                 <View style={styles.inputContainer}>
                   <View style={styles.inputIconBox}>
-                    <Mail size={19} color="#7C3AED" />
+                    <Mail size={19} color="#F59E0B" />
                   </View>
                   <TextInput
                     style={styles.textInput}
                     value={email}
                     onChangeText={setEmail}
                     placeholder="name@example.com"
-                    placeholderTextColor="#94A3B8"
+                    placeholderTextColor="#64748B"
                     keyboardType="email-address"
                     autoCapitalize="none"
                   />
@@ -744,14 +744,14 @@ export default function LoginScreen() {
                 {/* Password Field */}
                 <View style={[styles.inputContainer, { marginTop: 12 }]}>
                   <View style={styles.inputIconBox}>
-                    <Lock size={19} color="#7C3AED" />
+                    <Lock size={19} color="#F59E0B" />
                   </View>
                   <TextInput
                     style={styles.textInput}
                     value={password}
                     onChangeText={setPassword}
                     placeholder="Enter password"
-                    placeholderTextColor="#94A3B8"
+                    placeholderTextColor="#64748B"
                     secureTextEntry={!showPassword}
                   />
                   <TouchableOpacity
@@ -780,13 +780,13 @@ export default function LoginScreen() {
                   activeOpacity={0.85}
                 >
                   <LinearGradient
-                    colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                    colors={['#FDE047', '#F59E0B', '#D97706']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     style={styles.primaryBtnGradient}
                   >
                     {isLoading ? (
-                      <ActivityIndicator color="#FFFFFF" size="small" />
+                      <ActivityIndicator color="#0A0B10" size="small" />
                     ) : (
                       <Text style={styles.primaryBtnText}>Sign In</Text>
                     )}
@@ -799,7 +799,7 @@ export default function LoginScreen() {
                   onPress={() => animateToStep('email')}
                   activeOpacity={0.7}
                 >
-                  <RotateCcw size={15} color="#7C3AED" style={{ marginRight: 6 }} />
+                  <RotateCcw size={15} color="#F59E0B" style={{ marginRight: 6 }} />
                   <Text style={styles.secondaryToggleText}>Sign in with Email OTP instead</Text>
                 </TouchableOpacity>
               </View>
@@ -808,7 +808,7 @@ export default function LoginScreen() {
 
           {/* Trust Footer */}
           <View style={styles.trustFooter}>
-            <ShieldCheck size={16} color="#10B981" />
+            <ShieldCheck size={16} color="#F59E0B" />
             <Text style={styles.trustFooterText}>Bank-grade 256-bit encryption • NPCI compliant</Text>
           </View>
         </ScrollView>
@@ -820,7 +820,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   scrollContent: {
     paddingHorizontal: 20,
@@ -833,28 +833,35 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logoBadge: {
-    width: 58,
-    height: 58,
-    borderRadius: 20,
+    width: 66,
+    height: 66,
+    borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.35,
-    shadowRadius: 12,
+    shadowOpacity: 0.45,
+    shadowRadius: 16,
     elevation: 8,
-    marginBottom: 10,
+    marginBottom: 12,
+  },
+  brandLogoImg: {
+    width: 66,
+    height: 66,
+    borderRadius: 22,
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.45)',
   },
   brandName: {
     fontSize: 26,
     fontWeight: '900',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.5,
   },
   brandSubtitle: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#FBBF24',
     marginTop: 2,
   },
 
@@ -872,38 +879,38 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
     gap: 5,
   },
   stepPillActive: {
-    backgroundColor: '#F5F3FF',
-    borderColor: '#DDD6FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: 'rgba(245, 158, 11, 0.4)',
   },
   stepPillDone: {
-    backgroundColor: '#F0FDF4',
-    borderColor: '#DCFCE7',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
+    borderColor: 'rgba(245, 158, 11, 0.3)',
   },
   stepPillInactive: {
-    opacity: 0.6,
+    opacity: 0.5,
   },
   stepNumDot: {
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
   },
   stepPillText: {
     fontSize: 11.5,
     fontWeight: '600',
   },
   stepTextActive: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   stepTextDone: {
-    color: '#15803D',
+    color: '#F59E0B',
     fontWeight: '700',
   },
   stepTextInactive: {
@@ -912,33 +919,33 @@ const styles = StyleSheet.create({
   stepLine: {
     width: 14,
     height: 1.5,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.25)',
     marginHorizontal: 4,
   },
 
   // Card Container
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.92)',
     borderRadius: 24,
     padding: 24,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.05,
-    shadowRadius: 16,
-    elevation: 4,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.18,
+    shadowRadius: 20,
+    elevation: 6,
     marginBottom: 20,
   },
   cardTitle: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 4,
   },
   cardSubtitle: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 19,
     marginBottom: 20,
   },
@@ -947,9 +954,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.06)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     borderRadius: 14,
     paddingHorizontal: 12,
     height: 52,
@@ -960,7 +967,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     fontSize: 15,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
     height: '100%',
   },
@@ -973,9 +980,9 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: 'hidden',
     marginTop: 18,
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.28,
+    shadowOpacity: 0.35,
     shadowRadius: 10,
     elevation: 5,
   },
@@ -988,8 +995,8 @@ const styles = StyleSheet.create({
   },
   primaryBtnText: {
     fontSize: 15.5,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
 
   secondaryToggle: {
@@ -1001,13 +1008,15 @@ const styles = StyleSheet.create({
   },
   secondaryToggleText: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#7C3AED',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
 
   // Error Banner
   errorBox: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     borderRadius: 10,
     padding: 10,
     marginTop: 14,
@@ -1015,7 +1024,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#DC2626',
+    color: '#EF4444',
     textAlign: 'center',
   },
 
@@ -1024,9 +1033,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
     borderWidth: 1,
-    borderColor: '#EDE9FE',
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -1035,7 +1044,7 @@ const styles = StyleSheet.create({
   emailBadgeText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
     flex: 1,
     marginRight: 8,
   },
@@ -1046,7 +1055,7 @@ const styles = StyleSheet.create({
   changeEmailText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   otpGrid: {
     flexDirection: 'row',
@@ -1057,24 +1066,24 @@ const styles = StyleSheet.create({
     width: 44,
     height: 52,
     borderRadius: 12,
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.05)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.2)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   otpCellActive: {
-    borderColor: '#7C3AED',
-    backgroundColor: '#F5F3FF',
+    borderColor: '#F59E0B',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
   },
   otpCellFilled: {
-    borderColor: '#DDD6FE',
-    backgroundColor: '#FFFFFF',
+    borderColor: 'rgba(245, 158, 11, 0.45)',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
   },
   otpDigitText: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   hiddenInput: {
     position: 'absolute',
@@ -1091,22 +1100,24 @@ const styles = StyleSheet.create({
   pasteBtn: {
     paddingVertical: 4,
     paddingHorizontal: 8,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 8,
   },
   pasteBtnText: {
     fontSize: 11.5,
-    fontWeight: '600',
-    color: '#475569',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
   resendTimerText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   resendActiveText: {
     fontSize: 12,
-    color: '#7C3AED',
+    color: '#F59E0B',
     fontWeight: '700',
   },
 
@@ -1114,7 +1125,7 @@ const styles = StyleSheet.create({
   newMemberBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 4,
@@ -1125,30 +1136,30 @@ const styles = StyleSheet.create({
   newMemberBadgeText: {
     fontSize: 11.5,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   verifiedEmailBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F0FDF4',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
     borderWidth: 1,
-    borderColor: '#DCFCE7',
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     padding: 12,
     marginBottom: 16,
   },
   verifiedEmailLabel: {
     fontSize: 11,
-    color: '#166534',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   verifiedEmailVal: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#F8FAFC',
   },
   verifiedTag: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 6,
@@ -1156,7 +1167,7 @@ const styles = StyleSheet.create({
   verifiedTagText: {
     fontSize: 10.5,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#FBBF24',
   },
   fieldWrapper: {
     marginBottom: 12,
@@ -1164,7 +1175,7 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#334155',
+    color: '#CBD5E1',
     marginBottom: 6,
   },
 
@@ -1177,7 +1188,9 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
@@ -1185,13 +1198,13 @@ const styles = StyleSheet.create({
   successTitle: {
     fontSize: 22,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
     textAlign: 'center',
   },
   successSub: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
   },
 
@@ -1206,6 +1219,6 @@ const styles = StyleSheet.create({
   trustFooterText: {
     fontSize: 12,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
   },
 });

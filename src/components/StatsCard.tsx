@@ -8,7 +8,7 @@ export default function StatsCard() {
       {/* Total Deposit */}
       <View style={styles.statColumn}>
         <View style={styles.depositIconCircle}>
-          <ArrowUp size={18} color="#7C3AED" strokeWidth={2.8} />
+          <ArrowUp size={18} color="#F59E0B" strokeWidth={2.8} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.statLabel}>Total Deposit</Text>
@@ -37,18 +37,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.82)',
     marginHorizontal: 16,
     borderRadius: 20,
     paddingVertical: 14,
     paddingHorizontal: 18,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#F1F5F9',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
-    shadowRadius: 10,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
     elevation: 2,
   },
   statColumn: {
@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#EDE9FE', // Soft purple
+    backgroundColor: 'rgba(245, 158, 11, 0.16)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
@@ -69,7 +71,9 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#FEE2E2', // Soft pink/red
+    backgroundColor: 'rgba(239, 68, 68, 0.14)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
@@ -78,13 +82,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   statLabel: {
-    color: '#64748B',
+    color: '#94A3B8',
     fontSize: 12,
     fontWeight: '500',
     marginBottom: 2,
   },
   statValue: {
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontSize: 16,
     fontWeight: '700',
     letterSpacing: -0.2,
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
   verticalDivider: {
     width: 1,
     height: 38,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     marginHorizontal: 12,
   },
 });

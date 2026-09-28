@@ -11,7 +11,7 @@ export default function InviteBanner() {
   const [copied, setCopied] = useState(false);
 
   const inviteCode = user?._id ? user._id.slice(-6).toUpperCase() : 'VIP2026';
-  const inviteLink = `https://payu.trade/invite?code=${inviteCode}`;
+  const inviteLink = `https://dreampay.vip/invite?code=${inviteCode}`;
 
   const handleInvite = async () => {
     // 1. Copy link to clipboard
@@ -26,8 +26,8 @@ export default function InviteBanner() {
     // 2. Open native share sheet with generated invite link
     try {
       await Share.share({
-        title: 'Join My Team on PayU',
-        message: `Join my team on PayU and start earning daily commissions! Invitation Link: ${inviteLink}`,
+        title: 'Join My Team on DreamPay',
+        message: `Join my team on DreamPay and start earning daily commissions! Invitation Link: ${inviteLink}`,
         url: inviteLink,
       });
     } catch (err) {
@@ -37,7 +37,7 @@ export default function InviteBanner() {
 
   return (
     <LinearGradient
-      colors={['#FFD1D8', '#FFE0D4', '#FFEEDB']}
+      colors={['#241B08', '#16141F', '#0E0D14']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.container}
@@ -46,7 +46,7 @@ export default function InviteBanner() {
       <View style={styles.leftContent}>
         <Text style={styles.title}>Invite Friends & Earn</Text>
         <Text style={styles.subtitle}>
-          Grow your team and get exciting rewards!
+          Grow your team and unlock VIP golden commissions!
         </Text>
 
         <TouchableOpacity
@@ -56,14 +56,14 @@ export default function InviteBanner() {
         >
           {copied ? (
             <>
-              <Check size={14} color="#10B981" strokeWidth={2.5} />
-              <Text style={[styles.inviteText, { color: '#10B981' }]}>Link Copied!</Text>
+              <Check size={14} color="#0A0B10" strokeWidth={2.8} />
+              <Text style={styles.inviteText}>Link Copied!</Text>
             </>
           ) : (
             <>
-              <Share2 size={13} color="#0F172A" strokeWidth={2.2} />
+              <Share2 size={13} color="#0A0B10" strokeWidth={2.5} />
               <Text style={styles.inviteText}>Invite Now</Text>
-              <ArrowRight size={14} color="#0F172A" strokeWidth={2.5} />
+              <ArrowRight size={14} color="#0A0B10" strokeWidth={2.5} />
             </>
           )}
         </TouchableOpacity>
@@ -88,11 +88,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 24,
-    shadowColor: '#F43F5E',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.32)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 3,
+    shadowOpacity: 0.2,
+    shadowRadius: 14,
+    elevation: 4,
     overflow: 'hidden',
   },
   leftContent: {
@@ -101,13 +103,13 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   title: {
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '800',
     letterSpacing: -0.2,
   },
   subtitle: {
-    color: '#475569',
+    color: '#CBD5E1',
     fontSize: 12,
     fontWeight: '500',
     lineHeight: 16,
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
     maxWidth: 190,
   },
   inviteButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: '#F59E0B',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
@@ -124,16 +126,16 @@ const styles = StyleSheet.create({
     gap: 6,
     alignSelf: 'flex-start',
     marginTop: 14,
-    shadowColor: '#000',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 1,
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    elevation: 3,
   },
   inviteText: {
-    color: '#0F172A',
+    color: '#0A0B10',
     fontSize: 12.5,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   artWrapper: {
     width: 120,

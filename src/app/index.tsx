@@ -17,8 +17,8 @@ import { AlertTriangle, DownloadCloud, RefreshCw } from 'lucide-react-native';
 import { useAuth } from '../context/AuthContext';
 
 const { width } = Dimensions.get('window');
-const LIGHT_BG = '#F4F6FC';
-const PURPLE_GRADIENT = ['#8B5CF6', '#7C3AED', '#6D28D9'] as const;
+const DARK_BG = '#0A0B10';
+const GOLD_GRADIENT = ['#FDE047', '#F59E0B', '#D97706'] as const;
 
 export default function AppSplashScreen() {
   const router = useRouter();
@@ -113,7 +113,7 @@ export default function AppSplashScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       <Animated.View
         style={[
@@ -124,24 +124,24 @@ export default function AppSplashScreen() {
           },
         ]}
       >
-        {/* Sleek 3D Purple Logo */}
+        {/* Sleek Golden Logo */}
         <View style={styles.logoContainer}>
           <Image
-            source={require('../../assets/images/payu-purple-logo.png')}
+            source={require('../../assets/images/dreampay-logo.png')}
             style={styles.logoImage}
-            resizeMode="contain"
+            resizeMode="cover"
           />
         </View>
 
         {/* App Title & Subtitle */}
-        <Text style={styles.appName}>PayU</Text>
-        <Text style={styles.appTagline}>Fast, Secure Payments</Text>
+        <Text style={styles.appName}>DreamPay</Text>
+        <Text style={styles.appTagline}>Next-Gen Smart Wealth & Payments</Text>
 
         {/* Minimal Progress Bar */}
         <View style={styles.progressSection}>
           <View style={styles.progressTrack}>
             <LinearGradient
-              colors={PURPLE_GRADIENT}
+              colors={GOLD_GRADIENT}
               style={[styles.progressFill, { width: `${progress}%` }]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -153,7 +153,7 @@ export default function AppSplashScreen() {
       {/* Footer Security Badge */}
       <Animated.View style={[styles.footer, { opacity: fadeAnim }]}>
         <Text style={styles.versionText}>
-          v{appSettings?.currentVersion || '1.0.0'} (GDPE Production)
+          v{appSettings?.currentVersion || '1.0.0'} (DreamPay Official)
         </Text>
       </Animated.View>
 
@@ -210,7 +210,7 @@ export default function AppSplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: LIGHT_BG,
+    backgroundColor: DARK_BG,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
@@ -222,27 +222,29 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     marginBottom: 24,
-    shadowColor: '#7C3AED',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.35,
     shadowRadius: 18,
     elevation: 8,
   },
   logoImage: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
+    width: 104,
+    height: 104,
+    borderRadius: 28,
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.45)',
   },
   appName: {
     fontSize: 36,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: 2,
     marginBottom: 8,
   },
   appTagline: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#FBBF24',
     fontWeight: '600',
     letterSpacing: 1.2,
     textAlign: 'center',
@@ -256,7 +258,7 @@ const styles = StyleSheet.create({
   },
   progressTrack: {
     height: 4,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 2,
     overflow: 'hidden',
     width: '100%',
@@ -274,12 +276,12 @@ const styles = StyleSheet.create({
   },
   versionText: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: '#64748B',
     fontWeight: '500',
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
@@ -287,11 +289,13 @@ const styles = StyleSheet.create({
   modalCard: {
     width: '100%',
     maxWidth: 340,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 24,
     padding: 24,
     alignItems: 'center',
-    shadowColor: '#000',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 12 },
     shadowOpacity: 0.25,
     shadowRadius: 20,
@@ -308,13 +312,13 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 8,
     textAlign: 'center',
   },
   modalDesc: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 20,
     marginBottom: 24,
@@ -323,15 +327,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: 14,
     width: '100%',
   },
   modalButtonText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
   },
 });

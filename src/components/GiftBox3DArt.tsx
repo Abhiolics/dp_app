@@ -17,24 +17,24 @@ export default function GiftBox3DArt() {
     <View style={styles.container}>
       <Svg width="125" height="105" viewBox="0 0 125 105" fill="none">
         <Defs>
-          {/* Gift Box Base Gradient */}
+          {/* Gift Box Base Gradient - Obsidian Onyx */}
           <LinearGradient id="boxGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#F43F5E" />
-            <Stop offset="50%" stopColor="#E11D48" />
-            <Stop offset="100%" stopColor="#BE123C" />
+            <Stop offset="0%" stopColor="#2D2418" />
+            <Stop offset="50%" stopColor="#1E1810" />
+            <Stop offset="100%" stopColor="#120E08" />
           </LinearGradient>
 
           {/* Gift Box Lid Gradient */}
           <LinearGradient id="lidGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#FB7185" />
-            <Stop offset="100%" stopColor="#E11D48" />
+            <Stop offset="0%" stopColor="#3E301D" />
+            <Stop offset="100%" stopColor="#221A0F" />
           </LinearGradient>
 
-          {/* Purple Ribbon Gradient */}
+          {/* Luxury Gold Ribbon Gradient */}
           <LinearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0%" stopColor="#A855F7" />
-            <Stop offset="60%" stopColor="#7E22CE" />
-            <Stop offset="100%" stopColor="#581C87" />
+            <Stop offset="0%" stopColor="#FDE047" />
+            <Stop offset="50%" stopColor="#F59E0B" />
+            <Stop offset="100%" stopColor="#B45309" />
           </LinearGradient>
 
           {/* Gold Coin Gradient */}
@@ -53,13 +53,13 @@ export default function GiftBox3DArt() {
         <G transform="translate(18, 22) scale(0.8)">
           <Path
             d="M 0 -5 Q 0 0 5 0 Q 0 0 0 5 Q 0 0 -5 0 Q 0 0 0 -5 Z"
-            fill="#D946EF"
+            fill="#FDE047"
           />
         </G>
         <G transform="translate(112, 30) scale(0.7)">
           <Path
             d="M 0 -5 Q 0 0 5 0 Q 0 0 0 5 Q 0 0 -5 0 Q 0 0 0 -5 Z"
-            fill="#C026D3"
+            fill="#F59E0B"
           />
         </G>
         <G transform="translate(52, 6) scale(0.6)">

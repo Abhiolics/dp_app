@@ -35,10 +35,10 @@ import {
 import * as Clipboard from 'expo-clipboard';
 import { Colors } from '../constants/Colors';
 
-const DARK_BG = '#F4F6FC';
-const CARD_BG = '#FFFFFF';
-const TEXT_MUTED = '#64748B';
-const MINT = '#7C3AED';
+const DARK_BG = '#0A0B10';
+const CARD_BG = '#13151F';
+const TEXT_MUTED = '#94A3B8';
+const MINT = '#F59E0B';
 
 type DateFilter = 'All' | '7 Days' | '30 Days' | '90 Days';
 type StatusFilter = 'All' | 'Processing' | 'Submit' | 'Success' | 'Close';
@@ -106,7 +106,7 @@ export default function BuyOrdersScreen() {
               paymentMethod: d.plan?.name ? `${d.plan.name} Plan` : 'Direct Deposit',
               dateStr: createdAt.toISOString().replace('T', ' ').slice(0, 19),
               daysAgo: Math.max(0, daysAgo),
-              merchant: 'Official PayU Desk',
+              merchant: 'Official DreamPay Desk',
               referenceId: d.transactionRef || d._id,
             };
           });
@@ -173,10 +173,10 @@ export default function BuyOrdersScreen() {
       case 'success':
         return {
           label: 'Success',
-          color: '#7C3AED',
-          bg: 'rgba(124, 58, 237, 0.12)',
-          border: 'rgba(124, 58, 237, 0.3)',
-          icon: <CheckCircle2 size={12} color="#7C3AED" strokeWidth={2.5} />,
+          color: '#10B981',
+          bg: 'rgba(16, 185, 129, 0.15)',
+          border: 'rgba(16, 185, 129, 0.3)',
+          icon: <CheckCircle2 size={12} color="#10B981" strokeWidth={2.5} />,
         };
       case 'close':
       default:
@@ -208,7 +208,7 @@ export default function BuyOrdersScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       {/* Header with Back Arrow */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
         <TouchableOpacity
@@ -218,7 +218,7 @@ export default function BuyOrdersScreen() {
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           accessibilityLabel="Go back"
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Buy Orders</Text>
@@ -384,7 +384,7 @@ export default function BuyOrdersScreen() {
               activeOpacity={0.8}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 style={styles.emptyButtonGradient}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
@@ -676,22 +676,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 14,
     borderBottomWidth: 1,
-    borderBottomColor: '#EDF2F7',
+    borderBottomColor: 'rgba(255, 255, 255, 0.06)',
   },
   backButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
     letterSpacing: 0.3,
   },
   headerRightPlaceholder: {
@@ -703,15 +703,15 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 14,
-    backgroundColor: '#EDE9FE',
-    borderWidth: 0.5,
-    borderColor: '#DDD6FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     gap: 4,
   },
   resetButtonText: {
-    color: '#7C3AED',
+    color: '#F59E0B',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   dropdownsContainer: {
     paddingHorizontal: 20,
@@ -726,24 +726,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     paddingVertical: 10,
     paddingHorizontal: 12,
     borderRadius: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
-    shadowColor: '#0F172A',
+    borderWidth: 1.2,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 1,
   },
   dropdownButtonActive: {
-    borderColor: '#7C3AED',
-    backgroundColor: '#FAF5FF',
+    borderColor: '#F59E0B',
+    backgroundColor: '#1C1914',
   },
   dropdownButtonOpen: {
-    borderColor: '#7C3AED',
+    borderColor: '#F59E0B',
   },
   dropdownLeft: {
     flexDirection: 'row',
@@ -756,19 +756,19 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   dropdownIconCircleActive: {
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.18)',
   },
   dropdownTextCol: {
     flex: 1,
   },
   dropdownLabel: {
     fontSize: 10,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
     marginBottom: 2,
     textTransform: 'uppercase',
@@ -776,11 +776,11 @@ const styles = StyleSheet.create({
   },
   dropdownValue: {
     fontSize: 13,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
   },
   dropdownValueSelected: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   activePillsRow: {
@@ -793,25 +793,25 @@ const styles = StyleSheet.create({
   activePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
-    borderWidth: 0.5,
-    borderColor: '#DDD6FE',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.3)',
     gap: 6,
   },
   activePillText: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   clearAllBtn: {
     paddingVertical: 4,
     paddingHorizontal: 6,
   },
   clearAllText: {
-    color: '#64748B',
+    color: '#94A3B8',
     fontSize: 12,
     textDecorationLine: 'underline',
   },
@@ -822,22 +822,22 @@ const styles = StyleSheet.create({
   },
   resultsCountText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   listContent: {
     paddingHorizontal: 20,
     paddingBottom: 40,
   },
   orderCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 18,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#EDF2F7',
-    shadowColor: '#0F172A',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -854,7 +854,7 @@ const styles = StyleSheet.create({
   orderNumber: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   copyIconWrapper: {
     marginLeft: 6,
@@ -862,15 +862,15 @@ const styles = StyleSheet.create({
   },
   copiedBadge: {
     marginLeft: 6,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     paddingHorizontal: 6,
     paddingVertical: 1,
     borderRadius: 6,
     borderWidth: 0.5,
-    borderColor: '#DDD6FE',
+    borderColor: 'rgba(245, 158, 11, 0.3)',
   },
   copiedBadgeText: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontSize: 9,
     fontWeight: '700',
   },
@@ -896,22 +896,22 @@ const styles = StyleSheet.create({
   },
   amountLabel: {
     fontSize: 11,
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 3,
   },
   amountValue: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   cryptoValue: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   cardDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.07)',
     marginBottom: 10,
   },
   metaRow: {
@@ -926,7 +926,7 @@ const styles = StyleSheet.create({
   },
   metaText: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   dateText: {
     fontSize: 11,
@@ -936,7 +936,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: '#F1F5F9',
+    borderTopColor: 'rgba(255, 255, 255, 0.07)',
     gap: 8,
   },
   detailRow: {
@@ -946,11 +946,11 @@ const styles = StyleSheet.create({
   },
   detailLabel: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
   },
   detailValue: {
     fontSize: 12,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '600',
   },
   expandButton: {
@@ -960,12 +960,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: '#F1F5F9',
+    borderTopColor: 'rgba(255, 255, 255, 0.07)',
     gap: 4,
   },
   expandButtonText: {
     fontSize: 12,
-    color: '#7C3AED',
+    color: '#F59E0B',
     fontWeight: '600',
   },
   emptyContainer: {
@@ -978,22 +978,22 @@ const styles = StyleSheet.create({
     width: 68,
     height: 68,
     borderRadius: 34,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
   },
   emptyTitle: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   emptySubtitle: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 18,
     marginBottom: 20,
@@ -1009,27 +1009,27 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   emptyButtonText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'flex-end',
   },
   modalSheet: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
     paddingTop: 12,
     paddingBottom: Platform.OS === 'ios' ? 40 : 24,
     paddingHorizontal: 20,
-    shadowColor: '#0F172A',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: -6 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.3,
     shadowRadius: 16,
     elevation: 10,
   },
@@ -1037,7 +1037,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 4,
     borderRadius: 2,
-    backgroundColor: '#CBD5E1',
+    backgroundColor: '#334155',
     alignSelf: 'center',
     marginBottom: 16,
   },
@@ -1048,18 +1048,18 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(255, 255, 255, 0.07)',
   },
   modalTitle: {
     fontSize: 17,
-    fontWeight: '700',
-    color: '#0F172A',
+    fontWeight: '800',
+    color: '#F8FAFC',
   },
   closeButton: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -1073,13 +1073,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 14,
     borderRadius: 14,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   optionItemSelected: {
-    backgroundColor: '#EDE9FE',
-    borderColor: '#C4B5FD',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: '#F59E0B',
   },
   optionLeft: {
     flexDirection: 'row',
@@ -1092,12 +1092,12 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   optionIconCircleSelected: {
-    backgroundColor: '#DDD6FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.2)',
   },
   optionTextCol: {
     flex: 1,
@@ -1105,15 +1105,15 @@ const styles = StyleSheet.create({
   optionTitle: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#334155',
+    color: '#CBD5E1',
   },
   optionTitleSelected: {
-    color: '#0F172A',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   optionSubtitle: {
     fontSize: 11,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
 });

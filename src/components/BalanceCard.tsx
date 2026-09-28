@@ -15,7 +15,7 @@ export default function BalanceCard() {
 
   return (
     <LinearGradient
-      colors={['#18124C', '#24176B', '#1C277E']}
+      colors={['#241B08', '#16141F', '#0E0D14']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.cardContainer}
@@ -32,9 +32,9 @@ export default function BalanceCard() {
           >
             <Text style={styles.availableLabel}>Available Balance</Text>
             {showBalance ? (
-              <Eye size={16} color="rgba(255, 255, 255, 0.85)" strokeWidth={2} />
+              <Eye size={16} color="#FBBF24" strokeWidth={2.2} />
             ) : (
-              <EyeOff size={16} color="rgba(255, 255, 255, 0.85)" strokeWidth={2} />
+              <EyeOff size={16} color="#FBBF24" strokeWidth={2.2} />
             )}
           </TouchableOpacity>
 
@@ -58,13 +58,20 @@ export default function BalanceCard() {
           activeOpacity={0.85}
           onPress={() => router.push('/deposit')}
         >
-          <View style={styles.depositIconCircle}>
-            <Plus size={18} color="#FFFFFF" strokeWidth={3} />
-          </View>
-          <View style={styles.buttonTextContainer}>
-            <Text style={styles.depositTitle}>Deposit</Text>
-            <Text style={styles.depositSubtitle}>Add Money</Text>
-          </View>
+          <LinearGradient
+            colors={['#FDE047', '#F59E0B', '#D97706']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.depositGradient}
+          >
+            <View style={styles.depositIconCircle}>
+              <Plus size={16} color="#F59E0B" strokeWidth={3} />
+            </View>
+            <View style={styles.buttonTextContainer}>
+              <Text style={styles.depositTitle}>Deposit</Text>
+              <Text style={styles.depositSubtitle}>Add Funds</Text>
+            </View>
+          </LinearGradient>
         </TouchableOpacity>
 
         {/* Withdraw Button */}
@@ -74,11 +81,11 @@ export default function BalanceCard() {
           onPress={() => router.push('/withdraw')}
         >
           <View style={styles.withdrawIconCircle}>
-            <ArrowDownToLine size={16} color="#FFFFFF" strokeWidth={2.5} />
+            <ArrowDownToLine size={16} color="#F59E0B" strokeWidth={2.5} />
           </View>
           <View style={styles.buttonTextContainer}>
             <Text style={styles.withdrawTitle}>Withdraw</Text>
-            <Text style={styles.withdrawSubtitle}>Send to Bank</Text>
+            <Text style={styles.withdrawSubtitle}>To Bank</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -92,9 +99,11 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 18,
     marginBottom: 14,
-    shadowColor: '#18124C',
+    borderWidth: 1.5,
+    borderColor: 'rgba(245, 158, 11, 0.32)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.28,
+    shadowOpacity: 0.22,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -116,9 +125,9 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   availableLabel: {
-    color: 'rgba(255, 255, 255, 0.85)',
+    color: '#FBBF24',
     fontSize: 13,
-    fontWeight: '500',
+    fontWeight: '600',
     letterSpacing: 0.2,
   },
   balanceText: {
@@ -142,23 +151,25 @@ const styles = StyleSheet.create({
   },
   depositButton: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
     borderRadius: 16,
+    overflow: 'hidden',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.35,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+  depositGradient: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 11,
     paddingHorizontal: 14,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-    elevation: 2,
   },
   depositIconCircle: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    backgroundColor: '#4F46E5',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#0A0B10',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
@@ -167,44 +178,44 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   depositTitle: {
-    color: '#0F172A',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
     marginBottom: 1,
   },
   depositSubtitle: {
-    color: '#64748B',
+    color: '#78350F',
     fontSize: 10.5,
-    fontWeight: '500',
+    fontWeight: '700',
   },
   withdrawButton: {
     flex: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.14)',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     borderRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 11,
     paddingHorizontal: 14,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
   },
   withdrawIconCircle: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    backgroundColor: '#3730A3',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: 'rgba(245, 158, 11, 0.16)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
   },
   withdrawTitle: {
-    color: '#FFFFFF',
+    color: '#F8FAFC',
     fontSize: 14,
     fontWeight: '700',
     marginBottom: 1,
   },
   withdrawSubtitle: {
-    color: '#C7D2FE',
+    color: '#FBBF24',
     fontSize: 10.5,
     fontWeight: '500',
   },

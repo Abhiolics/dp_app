@@ -50,7 +50,7 @@ export default function TeamsScreen() {
       .finally(() => setIsLoading(false));
   }, [user]);
 
-  const inviteLink = stats?.inviteLink || `https://payu.trade/invite?code=VIP2026`;
+  const inviteLink = stats?.inviteLink || `https://dreampay.vip/invite?code=VIP2026`;
 
   const handleShare = async () => {
     try {
@@ -63,8 +63,8 @@ export default function TeamsScreen() {
 
     try {
       await Share.share({
-        title: 'Join My Team on PayU',
-        message: `Join my team on PayU and start earning daily commissions! Invitation Link: ${inviteLink}`,
+        title: 'Join My Team on DreamPay',
+        message: `Join my team on DreamPay and start earning daily commissions! Invitation Link: ${inviteLink}`,
         url: inviteLink,
       });
     } catch (err) {
@@ -86,7 +86,7 @@ export default function TeamsScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -95,7 +95,7 @@ export default function TeamsScreen() {
           onPress={() => (router.canGoBack() ? router.back() : router.replace('/(tabs)'))}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Teams</Text>
         <View style={{ width: 40 }} />
@@ -106,13 +106,13 @@ export default function TeamsScreen() {
         showsVerticalScrollIndicator={false}
       >
         {isLoading ? (
-          <ActivityIndicator color="#7C3AED" style={{ marginVertical: 40 }} />
+          <ActivityIndicator color="#F59E0B" style={{ marginVertical: 40 }} />
         ) : (
           <>
             {/* 1. Hero Card */}
             <LinearGradient
-              colors={['#8B5CF6', '#7C3AED', '#6D28D9', '#4C1D95']}
-              locations={[0, 0.35, 0.72, 1]}
+              colors={['#2A1F08', '#1A1510', '#100E0A']}
+              locations={[0, 0.45, 1]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.heroCard}
@@ -153,7 +153,7 @@ export default function TeamsScreen() {
             {/* 2. Invitation Card */}
             <View style={styles.invitationCard}>
               <View style={styles.inviteIconCircle}>
-                <Gift size={22} color="#7C3AED" />
+                <Gift size={22} color="#F59E0B" />
               </View>
 
               <View style={styles.inviteTextContainer}>
@@ -167,7 +167,7 @@ export default function TeamsScreen() {
                 activeOpacity={0.85}
               >
                 <LinearGradient
-                  colors={['#F59E0B', '#EAB308']}
+                  colors={['#FDE047', '#F59E0B', '#D97706']}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={styles.shareGradient}
@@ -214,7 +214,7 @@ export default function TeamsScreen() {
               {/* Progress Bar */}
               <View style={styles.progressTrack}>
                 <LinearGradient
-                  colors={['#8B5CF6', '#7C3AED']}
+                  colors={['#FDE047', '#F59E0B']}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                   style={[styles.progressFill, { width: `${Math.max(progressPct, 6)}%` }]}
@@ -233,11 +233,11 @@ export default function TeamsScreen() {
           <View style={styles.modalCard}>
             <View style={styles.modalHeader}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Award size={20} color="#7C3AED" />
+                <Award size={20} color="#F59E0B" />
                 <Text style={styles.modalTitle}>Commission Structure</Text>
               </View>
               <TouchableOpacity onPress={() => setShowDetailsModal(false)}>
-                <X size={20} color="#64748B" />
+                <X size={20} color="#94A3B8" />
               </TouchableOpacity>
             </View>
 
@@ -247,7 +247,7 @@ export default function TeamsScreen() {
 
             <View style={styles.tierBreakdown}>
               <View style={styles.tierItem}>
-                <View style={styles.tierDot} />
+                <View style={[styles.tierDot, { backgroundColor: '#F59E0B' }]} />
                 <View style={{ flex: 1 }}>
                   <Text style={styles.tierName}>Level A (Direct Referrals)</Text>
                   <Text style={styles.tierDetail}>Earn 20% on all deposit volumes</Text>
@@ -256,7 +256,7 @@ export default function TeamsScreen() {
               </View>
 
               <View style={styles.tierItem}>
-                <View style={[styles.tierDot, { backgroundColor: '#F59E0B' }]} />
+                <View style={[styles.tierDot, { backgroundColor: '#FBBF24' }]} />
                 <View style={{ flex: 1 }}>
                   <Text style={styles.tierName}>Level B (Sub-Referrals)</Text>
                   <Text style={styles.tierDetail}>Earn 10% on secondary team trades</Text>
@@ -278,7 +278,14 @@ export default function TeamsScreen() {
               style={styles.modalCloseBtn}
               onPress={() => setShowDetailsModal(false)}
             >
-              <Text style={styles.modalCloseBtnText}>Close</Text>
+              <LinearGradient
+                colors={['#FDE047', '#F59E0B', '#D97706']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.modalCloseGradient}
+              >
+                <Text style={styles.modalCloseBtnText}>Close</Text>
+              </LinearGradient>
             </TouchableOpacity>
           </View>
         </View>
@@ -290,7 +297,7 @@ export default function TeamsScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -303,16 +310,16 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     letterSpacing: -0.3,
   },
   scrollContent: {
@@ -323,21 +330,23 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 20,
     marginBottom: 16,
-    shadowColor: '#7C3AED',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.28,
+    shadowOpacity: 0.2,
     shadowRadius: 18,
     elevation: 8,
   },
   heroSub: {
-    color: '#DDD6FE',
+    color: '#FBBF24',
     fontSize: 13,
     fontWeight: '600',
     textAlign: 'center',
     marginBottom: 4,
   },
   heroAmount: {
-    color: '#FFFFFF',
+    color: '#FDE047',
     fontSize: 32,
     fontWeight: '800',
     textAlign: 'center',
@@ -351,24 +360,24 @@ const styles = StyleSheet.create({
   },
   gridBox: {
     width: '48%',
-    backgroundColor: 'rgba(15, 23, 42, 0.45)',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderRadius: 14,
     paddingVertical: 12,
     paddingHorizontal: 12,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: 'rgba(245, 158, 11, 0.18)',
   },
   gridLabel: {
-    color: '#CBD5E1',
+    color: '#94A3B8',
     fontSize: 11,
     fontWeight: '500',
     textAlign: 'center',
     marginBottom: 4,
   },
   gridValue: {
-    color: '#FFFFFF',
+    color: '#F8FAFC',
     fontSize: 15,
     fontWeight: '800',
     textAlign: 'center',
@@ -376,15 +385,15 @@ const styles = StyleSheet.create({
   invitationCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 18,
     padding: 14,
     marginBottom: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 2,
   },
@@ -392,7 +401,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 14,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -403,11 +412,11 @@ const styles = StyleSheet.create({
   inviteTitle: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   inviteSub: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 1,
   },
   shareButton: {
@@ -426,33 +435,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   shareText: {
-    color: '#0F172A',
+    color: '#0A0B10',
     fontSize: 13.5,
     fontWeight: '800',
   },
   contentCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 18,
     padding: 18,
     marginBottom: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 2,
   },
   cardSectionTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   levelBadgeText: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#D97706',
+    color: '#FBBF24',
     marginBottom: 12,
   },
   statLineRow: {
@@ -463,13 +472,13 @@ const styles = StyleSheet.create({
   },
   statLineLabel: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     fontWeight: '500',
   },
   statLineValue: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   volumeRow: {
     flexDirection: 'row',
@@ -480,7 +489,7 @@ const styles = StyleSheet.create({
   volumeText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   viewDetailsBtn: {
     paddingVertical: 2,
@@ -489,11 +498,11 @@ const styles = StyleSheet.create({
   viewDetailsText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#7C3AED',
+    color: '#F59E0B',
   },
   progressTrack: {
     height: 6,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 3,
     overflow: 'hidden',
     marginTop: 4,
@@ -504,7 +513,7 @@ const styles = StyleSheet.create({
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -512,9 +521,11 @@ const styles = StyleSheet.create({
   modalCard: {
     width: '100%',
     maxWidth: 340,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 22,
     padding: 20,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.28)',
   },
   modalHeader: {
     flexDirection: 'row',
@@ -525,11 +536,11 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   modalDesc: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     marginBottom: 16,
   },
@@ -540,40 +551,45 @@ const styles = StyleSheet.create({
   tierItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     borderRadius: 12,
     padding: 12,
     gap: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.06)',
   },
   tierDot: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#7C3AED',
   },
   tierName: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   tierDetail: {
     fontSize: 11,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 1,
   },
   tierRate: {
     fontSize: 15,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   modalCloseBtn: {
-    backgroundColor: '#7C3AED',
-    paddingVertical: 12,
     borderRadius: 12,
+    overflow: 'hidden',
+  },
+  modalCloseGradient: {
+    paddingVertical: 12,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
   },
   modalCloseBtnText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
     fontWeight: '700',
   },

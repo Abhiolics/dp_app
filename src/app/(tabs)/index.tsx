@@ -26,7 +26,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Sticky Top Section: Header & Big Balance Card */}
       <View style={styles.stickyTopContainer}>
@@ -39,7 +39,7 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#7C3AED" />
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#F59E0B" />
         }
       >
         <StatsCard />
@@ -54,10 +54,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   stickyTopContainer: {
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
     zIndex: 10,
   },
   scrollContent: {

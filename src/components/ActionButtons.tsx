@@ -10,38 +10,38 @@ export default function ActionButtons() {
     <View style={styles.container}>
       {/* 1. Task Card */}
       <TouchableOpacity
-        style={[styles.card, { backgroundColor: '#EDF5FE' }]}
+        style={styles.card}
         activeOpacity={0.8}
         onPress={() => router.push('/tasks')}
       >
-        <View style={[styles.iconCircle, { backgroundColor: '#3B82F6' }]}>
-          <CheckSquare size={20} color="#FFFFFF" strokeWidth={2.2} />
+        <View style={[styles.iconCircle, { backgroundColor: 'rgba(56, 189, 248, 0.15)', borderColor: 'rgba(56, 189, 248, 0.3)' }]}>
+          <CheckSquare size={19} color="#38BDF8" strokeWidth={2.2} />
         </View>
         <Text style={styles.cardTitle}>Task</Text>
-        <Text style={styles.cardSubtitle}>Earn More</Text>
+        <Text style={styles.cardSubtitle}>Earn Daily</Text>
       </TouchableOpacity>
 
       {/* 2. Plans Card */}
       <TouchableOpacity
-        style={[styles.card, { backgroundColor: '#FFFBEB' }]}
+        style={[styles.card, { borderColor: 'rgba(245, 158, 11, 0.45)' }]}
         activeOpacity={0.8}
         onPress={() => router.push('/(tabs)/card')}
       >
-        <View style={[styles.iconCircle, { backgroundColor: '#F59E0B' }]}>
-          <Sparkles size={20} color="#FFFFFF" strokeWidth={2.2} />
+        <View style={[styles.iconCircle, { backgroundColor: 'rgba(245, 158, 11, 0.2)', borderColor: 'rgba(245, 158, 11, 0.5)' }]}>
+          <Sparkles size={19} color="#FBBF24" strokeWidth={2.2} />
         </View>
-        <Text style={styles.cardTitle}>Plans</Text>
-        <Text style={styles.cardSubtitle}>VIP Tiers</Text>
+        <Text style={[styles.cardTitle, { color: '#FDE047' }]}>Plans</Text>
+        <Text style={[styles.cardSubtitle, { color: '#F59E0B' }]}>VIP Tiers</Text>
       </TouchableOpacity>
 
       {/* 3. Money Card */}
       <TouchableOpacity
-        style={[styles.card, { backgroundColor: '#ECFDF5' }]}
+        style={styles.card}
         activeOpacity={0.8}
         onPress={() => router.push('/(tabs)/wallet')}
       >
-        <View style={[styles.iconCircle, { backgroundColor: '#10B981' }]}>
-          <Wallet size={20} color="#FFFFFF" strokeWidth={2.2} />
+        <View style={[styles.iconCircle, { backgroundColor: 'rgba(16, 185, 129, 0.15)', borderColor: 'rgba(16, 185, 129, 0.3)' }]}>
+          <Wallet size={19} color="#10B981" strokeWidth={2.2} />
         </View>
         <Text style={styles.cardTitle}>Money</Text>
         <Text style={styles.cardSubtitle}>History</Text>
@@ -49,12 +49,12 @@ export default function ActionButtons() {
 
       {/* 4. Service Card */}
       <TouchableOpacity
-        style={[styles.card, { backgroundColor: '#F5F3FF' }]}
+        style={styles.card}
         activeOpacity={0.8}
         onPress={() => router.push('/service')}
       >
-        <View style={[styles.iconCircle, { backgroundColor: '#7C3AED' }]}>
-          <Headphones size={20} color="#FFFFFF" strokeWidth={2.2} />
+        <View style={[styles.iconCircle, { backgroundColor: 'rgba(245, 158, 11, 0.15)', borderColor: 'rgba(245, 158, 11, 0.3)' }]}>
+          <Headphones size={19} color="#F59E0B" strokeWidth={2.2} />
         </View>
         <Text style={styles.cardTitle}>Service</Text>
         <Text style={styles.cardSubtitle}>24/7 Desk</Text>
@@ -77,30 +77,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     alignItems: 'center',
     position: 'relative',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.7)',
-    shadowColor: '#000',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
-    shadowRadius: 6,
-    elevation: 1,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 2,
   },
   iconCircle: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
   },
   cardTitle: {
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontSize: 13,
     fontWeight: '700',
     marginBottom: 2,
   },
   cardSubtitle: {
-    color: '#64748B',
+    color: '#94A3B8',
     fontSize: 10,
     fontWeight: '500',
   },

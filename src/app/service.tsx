@@ -121,7 +121,7 @@ export default function ServiceScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -130,7 +130,7 @@ export default function ServiceScreen() {
           onPress={() => router.back()}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Help & Support</Text>
         <View style={{ width: 40 }} />
@@ -139,14 +139,14 @@ export default function ServiceScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {/* 24/7 Hero Support Card */}
         <LinearGradient
-          colors={['#0F172A', '#1E293B', '#334155']}
+          colors={['#2A1F08', '#1A1510', '#100E0A']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.heroCard}
         >
           <View style={styles.heroTop}>
             <View style={styles.heroIconCircle}>
-              <Headphones size={24} color="#7C3AED" />
+              <Headphones size={24} color="#F59E0B" />
             </View>
             <View style={styles.onlineBadge}>
               <View style={styles.onlineDot} />
@@ -162,11 +162,11 @@ export default function ServiceScreen() {
 
           <View style={styles.heroStatsRow}>
             <View style={styles.heroStatItem}>
-              <Clock size={14} color="#94A3B8" />
+              <Clock size={14} color="#FBBF24" />
               <Text style={styles.heroStatText}>Avg response: ~2 mins</Text>
             </View>
             <View style={styles.heroStatItem}>
-              <ShieldCheck size={14} color="#7C3AED" />
+              <ShieldCheck size={14} color="#10B981" />
               <Text style={styles.heroStatText}>100% Escrow Protected</Text>
             </View>
           </View>
@@ -176,7 +176,7 @@ export default function ServiceScreen() {
         <Text style={styles.sectionTitle}>Official Support Channels</Text>
 
         {isLoading ? (
-          <ActivityIndicator color="#7C3AED" style={{ marginVertical: 20 }} />
+          <ActivityIndicator color="#F59E0B" style={{ marginVertical: 20 }} />
         ) : (
           <View style={styles.channelsList}>
             {channels.map((channel) => (
@@ -195,7 +195,7 @@ export default function ServiceScreen() {
                   </Text>
                 </View>
 
-                <ExternalLink size={16} color="#94A3B8" />
+                <ExternalLink size={16} color="#F59E0B" />
               </TouchableOpacity>
             ))}
           </View>
@@ -207,7 +207,7 @@ export default function ServiceScreen() {
           {FAQS.map((faq, index) => (
             <View key={index} style={styles.faqCard}>
               <View style={styles.faqQuestionRow}>
-                <HelpCircle size={16} color="#7C3AED" />
+                <HelpCircle size={16} color="#F59E0B" />
                 <Text style={styles.faqQuestion}>{faq.q}</Text>
               </View>
               <Text style={styles.faqAnswer}>{faq.a}</Text>
@@ -222,7 +222,7 @@ export default function ServiceScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -235,15 +235,16 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 2,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   content: {
     paddingHorizontal: 16,
@@ -253,6 +254,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 18,
     marginBottom: 20,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.15,
+    shadowRadius: 14,
+    elevation: 4,
   },
   heroTop: {
     flexDirection: 'row',
@@ -264,14 +272,14 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   onlineBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+    backgroundColor: 'rgba(16, 185, 129, 0.18)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
@@ -291,7 +299,7 @@ const styles = StyleSheet.create({
   heroTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   heroSub: {
@@ -305,7 +313,7 @@ const styles = StyleSheet.create({
     gap: 16,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.1)',
+    borderTopColor: 'rgba(255, 255, 255, 0.08)',
   },
   heroStatItem: {
     flexDirection: 'row',
@@ -319,7 +327,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 12,
   },
   channelsList: {
@@ -328,40 +336,40 @@ const styles = StyleSheet.create({
   channelCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 16,
     padding: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     gap: 12,
   },
   channelIconWrap: {
     width: 42,
     height: 42,
     borderRadius: 21,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   channelLabel: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   channelValue: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   faqList: {
     gap: 10,
   },
   faqCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 16,
     padding: 14,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   faqQuestionRow: {
     flexDirection: 'row',
@@ -372,12 +380,12 @@ const styles = StyleSheet.create({
   faqQuestion: {
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     flex: 1,
   },
   faqAnswer: {
     fontSize: 12.5,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 18,
     paddingLeft: 24,
   },

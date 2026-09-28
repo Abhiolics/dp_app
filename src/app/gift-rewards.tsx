@@ -174,7 +174,7 @@ export default function GiftRewardsScreen() {
 
   return (
     <View style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Header with Back option */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -183,7 +183,7 @@ export default function GiftRewardsScreen() {
           onPress={() => (router.canGoBack() ? router.back() : router.replace('/(tabs)/profile'))}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" />
+          <ArrowLeft size={20} color="#F8FAFC" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Gift Rewards</Text>
@@ -198,7 +198,7 @@ export default function GiftRewardsScreen() {
         {/* Custom Code Input Section */}
         <View style={styles.redeemBox}>
           <View style={styles.redeemHeaderRow}>
-            <Gift size={18} color="#7C3AED" />
+            <Gift size={18} color="#F59E0B" />
             <Text style={styles.redeemBoxTitle}>Redeem Gift Voucher</Text>
           </View>
 
@@ -208,7 +208,7 @@ export default function GiftRewardsScreen() {
               value={customInput}
               onChangeText={setCustomInput}
               placeholder="Enter voucher code (e.g. WIN100)"
-              placeholderTextColor="#94A3B8"
+              placeholderTextColor="#64748B"
               autoCapitalize="characters"
               autoCorrect={false}
             />
@@ -223,13 +223,13 @@ export default function GiftRewardsScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.redeemBtnGradient}
               >
                 {isSubmittingCustom ? (
-                  <ActivityIndicator color="#FFFFFF" size="small" />
+                  <ActivityIndicator color="#0A0B10" size="small" />
                 ) : (
                   <Text style={styles.redeemBtnText}>Redeem</Text>
                 )}
@@ -251,7 +251,7 @@ export default function GiftRewardsScreen() {
           {rewards.length === 0 ? (
             <View style={styles.emptyStateBox}>
               <View style={styles.emptyIconWrap}>
-                <Gift size={32} color="#7C3AED" />
+                <Gift size={32} color="#F59E0B" />
               </View>
               <Text style={styles.emptyTitle}>No Gift Vouchers</Text>
               <Text style={styles.emptySub}>
@@ -275,12 +275,12 @@ export default function GiftRewardsScreen() {
                     onPress={() => handleCopyCode(item.code)}
                     activeOpacity={0.7}
                   >
-                    <Gift size={13} color="#7C3AED" style={{ marginRight: 5 }} />
+                    <Gift size={13} color="#F59E0B" style={{ marginRight: 5 }} />
                     <Text style={styles.codeText}>{item.code}</Text>
                     {isCopied ? (
                       <Check size={12} color="#10B981" style={{ marginLeft: 5 }} />
                     ) : (
-                      <Copy size={12} color="#94A3B8" style={{ marginLeft: 5 }} />
+                      <Copy size={12} color="#FBBF24" style={{ marginLeft: 5 }} />
                     )}
                   </TouchableOpacity>
 
@@ -353,16 +353,16 @@ export default function GiftRewardsScreen() {
                       activeOpacity={0.85}
                     >
                       <LinearGradient
-                        colors={['#8B5CF6', '#7C3AED', '#6D28D9']}
+                        colors={['#FDE047', '#F59E0B', '#D97706']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
                         style={styles.claimBtnGradient}
                       >
                         {isItemLoading ? (
-                          <ActivityIndicator color="#FFFFFF" size="small" />
+                          <ActivityIndicator color="#0A0B10" size="small" />
                         ) : (
                           <>
-                            <Sparkles size={13} color="#FFFFFF" style={{ marginRight: 4 }} />
+                            <Sparkles size={13} color="#0A0B10" style={{ marginRight: 4 }} />
                             <Text style={styles.claimBtnText}>Claim</Text>
                           </>
                         )}
@@ -409,7 +409,7 @@ export default function GiftRewardsScreen() {
               activeOpacity={0.85}
             >
               <LinearGradient
-                colors={['#8B5CF6', '#7C3AED']}
+                colors={['#FDE047', '#F59E0B', '#D97706']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.modalCloseGradient}
@@ -427,7 +427,7 @@ export default function GiftRewardsScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -435,9 +435,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingBottom: 14,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0A0B10',
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F5F9',
+    borderBottomColor: 'rgba(245, 158, 11, 0.2)',
   },
   backButton: {
     width: 38,
@@ -445,12 +445,14 @@ const styles = StyleSheet.create({
     borderRadius: 19,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   headerRightPlaceholder: {
     width: 38,
@@ -463,16 +465,16 @@ const styles = StyleSheet.create({
 
   // Redeem Custom Code Box
   redeemBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 16,
     marginBottom: 20,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
-    shadowRadius: 8,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
     elevation: 2,
   },
   redeemHeaderRow: {
@@ -484,7 +486,7 @@ const styles = StyleSheet.create({
   redeemBoxTitle: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   inputRow: {
     flexDirection: 'row',
@@ -492,15 +494,15 @@ const styles = StyleSheet.create({
   },
   codeInput: {
     flex: 1,
-    backgroundColor: '#F8FAFC',
-    borderWidth: 1.5,
-    borderColor: '#E2E8F0',
+    backgroundColor: 'rgba(245, 158, 11, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     borderRadius: 12,
     paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 13.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   redeemBtn: {
     borderRadius: 12,
@@ -514,12 +516,12 @@ const styles = StyleSheet.create({
   },
   redeemBtnText: {
     fontSize: 13.5,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
   errorText: {
     fontSize: 12,
-    color: '#DC2626',
+    color: '#EF4444',
     fontWeight: '600',
     marginTop: 8,
   },
@@ -534,12 +536,12 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   sectionCount: {
     fontSize: 12.5,
-    fontWeight: '600',
-    color: '#64748B',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
 
   // Rewards List
@@ -547,20 +549,19 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   rewardCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 16,
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 2,
   },
   rewardCardClaimed: {
-    opacity: 0.85,
-    backgroundColor: '#FBFBFE',
+    opacity: 0.7,
   },
   cardTopRow: {
     flexDirection: 'row',
@@ -571,17 +572,17 @@ const styles = StyleSheet.create({
   codePill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#DDD6FE',
+    borderColor: 'rgba(245, 158, 11, 0.3)',
   },
   codeText: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#7C3AED',
+    color: '#FBBF24',
     letterSpacing: 0.5,
   },
   statusBadge: {
@@ -590,26 +591,28 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   statusBadgeAvailable: {
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
   },
   statusBadgeClaimed: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
   },
   statusBadgeExpired: {
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
   },
   statusBadgeText: {
     fontSize: 11,
     fontWeight: '700',
   },
   statusTextAvailable: {
-    color: '#15803D',
+    color: '#10B981',
   },
   statusTextClaimed: {
-    color: '#64748B',
+    color: '#94A3B8',
   },
   statusTextExpired: {
-    color: '#DC2626',
+    color: '#EF4444',
   },
 
   cardMiddleRow: {
@@ -625,12 +628,12 @@ const styles = StyleSheet.create({
   rewardTitle: {
     fontSize: 15,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 2,
   },
   rewardDesc: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     lineHeight: 16,
   },
   amountCol: {
@@ -639,19 +642,19 @@ const styles = StyleSheet.create({
   amountLabel: {
     fontSize: 11,
     fontWeight: '500',
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 1,
   },
   amountValue: {
     fontSize: 20,
     fontWeight: '900',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
 
   dashedDivider: {
     height: 1,
     borderWidth: 1,
-    borderColor: '#F1F5F9',
+    borderColor: 'rgba(245, 158, 11, 0.15)',
     borderStyle: 'dashed',
     marginBottom: 12,
   },
@@ -667,7 +670,7 @@ const styles = StyleSheet.create({
   },
   expiryText: {
     fontSize: 11.5,
-    color: '#94A3B8',
+    color: '#64748B',
     fontWeight: '500',
   },
 
@@ -684,43 +687,45 @@ const styles = StyleSheet.create({
   },
   claimBtnText: {
     fontSize: 13,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
   claimedPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F0FDF4',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#DCFCE7',
+    borderColor: 'rgba(16, 185, 129, 0.3)',
   },
   claimedText: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#15803D',
+    color: '#10B981',
   },
 
   // Modal
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.55)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 24,
   },
   modalCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 22,
     padding: 24,
     width: '100%',
     maxWidth: 360,
     alignItems: 'center',
-    shadowColor: '#000',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 8,
   },
@@ -728,7 +733,9 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: '#DCFCE7',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
@@ -736,40 +743,40 @@ const styles = StyleSheet.create({
   modalCongratsTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   modalCongratsSub: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 18,
     marginBottom: 16,
   },
   modalRewardSummary: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(245, 158, 11, 0.08)',
     borderRadius: 14,
     padding: 16,
     alignItems: 'center',
     width: '100%',
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     marginBottom: 12,
   },
   modalRewardAmount: {
     fontSize: 28,
     fontWeight: '900',
-    color: '#7C3AED',
+    color: '#FBBF24',
   },
   modalRewardCode: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 4,
   },
   modalCreditNote: {
     fontSize: 12,
-    color: '#15803D',
+    color: '#10B981',
     fontWeight: '600',
     textAlign: 'center',
     marginBottom: 20,
@@ -786,24 +793,26 @@ const styles = StyleSheet.create({
   },
   modalCloseText: {
     fontSize: 14.5,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontWeight: '800',
+    color: '#0A0B10',
   },
   emptyStateBox: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 32,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1.5,
-    borderColor: '#F1F5F9',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
     marginTop: 8,
   },
   emptyIconWrap: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#F5F3FF',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
@@ -811,12 +820,12 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 6,
   },
   emptySub: {
     fontSize: 13,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 19,
     paddingHorizontal: 12,

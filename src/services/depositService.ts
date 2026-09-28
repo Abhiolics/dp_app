@@ -59,6 +59,22 @@ export const submitDeposit = async (
     } as any);
   }
 
+  // Local response if API_URL is not set
+  if (!API_URL) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return {
+      success: true,
+      message: 'Deposit submitted successfully! Awaiting verification.',
+      data: {
+        _id: `dep_${Date.now()}`,
+        amount,
+        transactionRef,
+        status: 'pending',
+        createdAt: new Date().toISOString(),
+      },
+    };
+  }
+
   // Send request via fetch without manual Content-Type header so the multipart boundary is automatically set
   const response = await fetch(`${API_URL}/deposits`, {
     method: 'POST',

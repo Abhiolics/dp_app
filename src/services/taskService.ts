@@ -63,6 +63,21 @@ export const submitTaskProof = async (
     } as any);
   }
 
+  // Local response if API_URL is not set
+  if (!API_URL) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return {
+      success: true,
+      message: 'Task proof submitted successfully! Awaiting review.',
+      data: {
+        _id: `sub_${Date.now()}`,
+        task: taskId,
+        status: 'pending',
+        createdAt: new Date().toISOString(),
+      },
+    };
+  }
+
   const response = await fetch(`${API_URL}/tasks/${taskId}/submit`, {
     method: 'POST',
     headers: {

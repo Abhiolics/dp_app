@@ -147,7 +147,7 @@ export default function WithdrawScreen() {
       style={styles.safeArea}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
 
       {/* Top Header */}
       <View style={[styles.header, { paddingTop: topPadding }]}>
@@ -156,7 +156,7 @@ export default function WithdrawScreen() {
           onPress={() => router.back()}
           activeOpacity={0.7}
         >
-          <ArrowLeft size={20} color="#0F172A" strokeWidth={2.2} />
+          <ArrowLeft size={20} color="#F8FAFC" strokeWidth={2.2} />
         </TouchableOpacity>
 
         <View style={styles.tabToggle}>
@@ -191,7 +191,7 @@ export default function WithdrawScreen() {
           onPress={() => router.push('/service')}
           activeOpacity={0.7}
         >
-          <Headphones size={18} color="#7C3AED" strokeWidth={2.2} />
+          <Headphones size={18} color="#F59E0B" strokeWidth={2.2} />
         </TouchableOpacity>
       </View>
 
@@ -203,7 +203,7 @@ export default function WithdrawScreen() {
         >
           {/* Balance Hero Card */}
           <LinearGradient
-            colors={['#18124C', '#24176B', '#3B28A8']}
+            colors={['#2A1F08', '#1A1510', '#100E0A']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.balanceCard}
@@ -228,6 +228,7 @@ export default function WithdrawScreen() {
                   if (errorMessage) setErrorMessage(null);
                 }}
                 placeholder="500"
+                placeholderTextColor="#64748B"
                 keyboardType="numeric"
               />
             </View>
@@ -255,7 +256,7 @@ export default function WithdrawScreen() {
           {/* Bank Account Details */}
           <View style={styles.bankFormCard}>
             <View style={styles.bankFormTitleRow}>
-              <Building2 size={18} color="#7C3AED" />
+              <Building2 size={18} color="#F59E0B" />
               <Text style={styles.bankFormTitle}>Beneficiary Bank Account</Text>
             </View>
 
@@ -263,10 +264,11 @@ export default function WithdrawScreen() {
             <View style={styles.fieldBox}>
               <Text style={styles.fieldLabel}>Account Holder Name</Text>
               <View style={styles.fieldInputRow}>
-                <User size={16} color="#94A3B8" />
+                <User size={16} color="#F59E0B" />
                 <TextInput
                   style={styles.fieldInput}
                   placeholder="As per bank passbook"
+                  placeholderTextColor="#64748B"
                   value={accountHolder}
                   onChangeText={setAccountHolder}
                 />
@@ -277,10 +279,11 @@ export default function WithdrawScreen() {
             <View style={styles.fieldBox}>
               <Text style={styles.fieldLabel}>Account Number</Text>
               <View style={styles.fieldInputRow}>
-                <Hash size={16} color="#94A3B8" />
+                <Hash size={16} color="#F59E0B" />
                 <TextInput
                   style={styles.fieldInput}
                   placeholder="Enter full account number"
+                  placeholderTextColor="#64748B"
                   value={accountNumber}
                   onChangeText={setAccountNumber}
                   keyboardType="number-pad"
@@ -292,10 +295,11 @@ export default function WithdrawScreen() {
             <View style={styles.fieldBox}>
               <Text style={styles.fieldLabel}>IFSC Code</Text>
               <View style={styles.fieldInputRow}>
-                <CreditCard size={16} color="#94A3B8" />
+                <CreditCard size={16} color="#F59E0B" />
                 <TextInput
                   style={styles.fieldInput}
                   placeholder="e.g. SBIN0001234"
+                  placeholderTextColor="#64748B"
                   value={ifscCode}
                   onChangeText={(val) => setIfscCode(val.toUpperCase())}
                   autoCapitalize="characters"
@@ -307,10 +311,11 @@ export default function WithdrawScreen() {
             <View style={styles.fieldBox}>
               <Text style={styles.fieldLabel}>UPI ID (Optional)</Text>
               <View style={styles.fieldInputRow}>
-                <Sparkles size={16} color="#94A3B8" />
+                <Sparkles size={16} color="#F59E0B" />
                 <TextInput
                   style={styles.fieldInput}
                   placeholder="e.g. name@upi"
+                  placeholderTextColor="#64748B"
                   value={upiId}
                   onChangeText={setUpiId}
                   autoCapitalize="none"
@@ -322,7 +327,7 @@ export default function WithdrawScreen() {
           {/* Error Message */}
           {errorMessage && (
             <View style={styles.errorBox}>
-              <AlertCircle size={16} color="#B91C1C" />
+              <AlertCircle size={16} color="#EF4444" />
               <Text style={styles.errorText}>{errorMessage}</Text>
             </View>
           )}
@@ -338,15 +343,15 @@ export default function WithdrawScreen() {
           <View style={styles.historyHeaderRow}>
             <Text style={styles.historySectionTitle}>Your Withdrawal History</Text>
             <TouchableOpacity onPress={loadHistory} activeOpacity={0.7}>
-              <RefreshCw size={16} color="#7C3AED" />
+              <RefreshCw size={16} color="#F59E0B" />
             </TouchableOpacity>
           </View>
 
           {isLoadingHistory ? (
-            <ActivityIndicator color="#7C3AED" style={{ marginVertical: 32 }} />
+            <ActivityIndicator color="#F59E0B" style={{ marginVertical: 32 }} />
           ) : withdrawals.length === 0 ? (
             <View style={styles.emptyContainer}>
-              <Clock size={40} color="#94A3B8" />
+              <Clock size={40} color="#64748B" />
               <Text style={styles.emptyTitle}>No Withdrawals Yet</Text>
               <Text style={styles.emptySubtitle}>
                 Your requested payouts will appear here with instant status updates.
@@ -409,19 +414,21 @@ export default function WithdrawScreen() {
           >
             <LinearGradient
               colors={
-                !isFormValid ? ['#E2E8F0', '#CBD5E1'] : ['#6D28D9', '#7C3AED', '#8B5CF6']
+                !isFormValid
+                  ? ['rgba(255, 255, 255, 0.08)', 'rgba(255, 255, 255, 0.04)']
+                  : ['#FDE047', '#F59E0B', '#D97706']
               }
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               style={styles.submitGradient}
             >
               {isSubmitting ? (
-                <ActivityIndicator color="#FFFFFF" size="small" />
+                <ActivityIndicator color="#0A0B10" size="small" />
               ) : (
                 <Text
                   style={[
                     styles.submitButtonText,
-                    { color: !isFormValid ? '#94A3B8' : '#FFFFFF' },
+                    { color: !isFormValid ? '#64748B' : '#0A0B10' },
                   ]}
                 >
                   Request Instant Withdrawal
@@ -461,7 +468,7 @@ export default function WithdrawScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F4F6FC',
+    backgroundColor: '#0A0B10',
   },
   header: {
     flexDirection: 'row',
@@ -474,16 +481,20 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 2,
   },
   tabToggle: {
     flexDirection: 'row',
-    backgroundColor: '#E2E8F0',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     borderRadius: 12,
     padding: 3,
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.15)',
   },
   tabButton: {
     paddingVertical: 6,
@@ -491,23 +502,25 @@ const styles = StyleSheet.create({
     borderRadius: 9,
   },
   tabButtonActive: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(245, 158, 11, 0.2)',
     elevation: 2,
   },
   tabButtonText: {
     fontSize: 12.5,
     fontWeight: '600',
-    color: '#64748B',
+    color: '#94A3B8',
   },
   tabButtonTextActive: {
-    color: '#7C3AED',
+    color: '#FBBF24',
     fontWeight: '700',
   },
   needHelpButton: {
     width: 38,
     height: 38,
     borderRadius: 19,
-    backgroundColor: '#EDE9FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -519,11 +532,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 18,
     marginBottom: 16,
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
   },
   balanceLabel: {
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: '#FBBF24',
     fontSize: 12.5,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   balanceValue: {
     color: '#FFFFFF',
@@ -533,7 +552,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   balanceSub: {
-    color: '#CBD5E1',
+    color: '#94A3B8',
     fontSize: 11.5,
   },
   inputSection: {
@@ -542,30 +561,30 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 12.5,
     fontWeight: '700',
-    color: '#334155',
+    color: '#CBD5E1',
     marginBottom: 6,
   },
   amountInputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 14,
     borderWidth: 1.2,
-    borderColor: '#CBD5E1',
+    borderColor: 'rgba(245, 158, 11, 0.25)',
     paddingHorizontal: 14,
     height: 50,
   },
   currencySymbol: {
     fontSize: 20,
-    fontWeight: '700',
-    color: '#7C3AED',
+    fontWeight: '800',
+    color: '#F59E0B',
     marginRight: 8,
   },
   amountInput: {
     flex: 1,
     fontSize: 18,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   chipsRow: {
     flexDirection: 'row',
@@ -573,33 +592,33 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   chip: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 10,
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
   },
   chipText: {
     fontSize: 12,
-    fontWeight: '600',
-    color: '#475569',
+    fontWeight: '700',
+    color: '#FBBF24',
   },
   chipMax: {
-    backgroundColor: '#EDE9FE',
-    borderColor: '#DDD6FE',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   chipTextMax: {
-    color: '#7C3AED',
-    fontWeight: '700',
+    color: '#FBBF24',
+    fontWeight: '800',
   },
   bankFormCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 18,
     padding: 16,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   bankFormTitleRow: {
     flexDirection: 'row',
@@ -610,24 +629,24 @@ const styles = StyleSheet.create({
   bankFormTitle: {
     fontSize: 14.5,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   fieldBox: {
     marginBottom: 12,
   },
   fieldLabel: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginBottom: 4,
     fontWeight: '600',
   },
   fieldInputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: 'rgba(245, 158, 11, 0.05)',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: 'rgba(245, 158, 11, 0.2)',
     paddingHorizontal: 12,
     height: 44,
     gap: 8,
@@ -635,15 +654,15 @@ const styles = StyleSheet.create({
   fieldInput: {
     flex: 1,
     fontSize: 13.5,
-    color: '#0F172A',
+    color: '#F8FAFC',
     fontWeight: '500',
   },
   errorBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FEE2E2',
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
     borderWidth: 1,
-    borderColor: '#FCA5A5',
+    borderColor: 'rgba(239, 68, 68, 0.3)',
     padding: 10,
     borderRadius: 12,
     marginBottom: 16,
@@ -651,7 +670,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     flex: 1,
-    color: '#B91C1C',
+    color: '#EF4444',
     fontSize: 12.5,
     fontWeight: '600',
   },
@@ -660,11 +679,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0A0B10',
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderTopWidth: 1,
-    borderTopColor: '#E2E8F0',
+    borderTopColor: 'rgba(245, 158, 11, 0.2)',
   },
   submitButtonWrapper: {
     borderRadius: 14,
@@ -680,7 +699,7 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   historyContent: {
     padding: 16,
@@ -694,7 +713,7 @@ const styles = StyleSheet.create({
   historySectionTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   emptyContainer: {
     alignItems: 'center',
@@ -703,7 +722,7 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#334155',
+    color: '#F8FAFC',
     marginTop: 12,
   },
   emptySubtitle: {
@@ -714,12 +733,12 @@ const styles = StyleSheet.create({
     maxWidth: 260,
   },
   historyCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(19, 21, 31, 0.85)',
     borderRadius: 16,
     padding: 14,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.22)',
   },
   historyCardTop: {
     flexDirection: 'row',
@@ -729,11 +748,11 @@ const styles = StyleSheet.create({
   historyAmount: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
   },
   historyBankInfo: {
     fontSize: 12,
-    color: '#64748B',
+    color: '#94A3B8',
     marginTop: 2,
   },
   statusBadge: {
@@ -748,7 +767,7 @@ const styles = StyleSheet.create({
   },
   historyCardDivider: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
     marginVertical: 10,
   },
   historyCardBottom: {
@@ -758,16 +777,16 @@ const styles = StyleSheet.create({
   },
   historyDate: {
     fontSize: 11,
-    color: '#94A3B8',
+    color: '#64748B',
   },
   historyIfsc: {
     fontSize: 11,
-    color: '#64748B',
-    fontWeight: '500',
+    color: '#FBBF24',
+    fontWeight: '600',
   },
   modalBackdrop: {
     flex: 1,
-    backgroundColor: 'rgba(15, 23, 42, 0.75)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,
@@ -775,16 +794,24 @@ const styles = StyleSheet.create({
   modalCard: {
     width: '100%',
     maxWidth: 340,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#13151F',
     borderRadius: 24,
     padding: 24,
     alignItems: 'center',
+    borderWidth: 1.2,
+    borderColor: 'rgba(245, 158, 11, 0.35)',
+    shadowColor: '#F59E0B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
   },
   successIconCircle: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#D1FAE5',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 14,
@@ -792,18 +819,18 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#F8FAFC',
     marginBottom: 8,
   },
   modalDesc: {
     fontSize: 13.5,
-    color: '#64748B',
+    color: '#94A3B8',
     textAlign: 'center',
     lineHeight: 20,
     marginBottom: 20,
   },
   modalButton: {
-    backgroundColor: '#7C3AED',
+    backgroundColor: '#F59E0B',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 12,
@@ -811,8 +838,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalButtonText: {
-    color: '#FFFFFF',
+    color: '#0A0B10',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '800',
   },
 });

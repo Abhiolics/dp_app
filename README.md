@@ -1,56 +1,30 @@
-# payu_app
+# dp_app
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**DreamPay** - Next-Gen Smart Wealth & Payments Mobile App built with Expo, React Native, and React Native Reanimated.
 
-## Get started
+## Features
+- **Dark Golden Glassmorphism Design System**: Tailored 24K radiant gold accents, deep obsidian translucent surfaces, and precision chamfered geometric components.
+- **Normal Grounded Bottom Navigation (Seed Type)**: Clean edge-to-edge docked bar with seed pill active indicators across all 5 core modules:
+  - 🏠 **Home**: Real-time balance, quick deposit/withdraw actions, market tickers, and dynamic invite banners.
+  - ✨ **Plans**: VIP investment tiers, daily returns calculator, and yield upgrades.
+  - 💳 **Payment**: Complete payment & transaction center, UPI QR gateways, bank transfers, and gift code redemption.
+  - 👥 **Teams**: Multi-tier referral commission tracking, team volume metrics, and instant invitation sharing.
+  - 👤 **Account**: Security center, profile management, and account settings.
+- **Self-Contained Architecture**: Offline-ready data adapter with instant local responses for all transaction flows, deposits, withdrawals, and task submissions.
 
-1. Install dependencies
+## Getting Started
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Install Dependencies
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Start Dev Server
+```bash
+npx expo start
+```
 
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 3. Build APK
+```bash
+npx eas-cli build -p android --profile preview
+```
